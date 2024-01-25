@@ -24,10 +24,10 @@ const styles = {
 const Projects = () => {
   return (
     <div className='bg-black '>
-      <div className='text-white h-svh bg-img' style={styles.header}></div>
-      <div style={styles.content} className='py-64 text-white'>
+      <div className='text-white h-96 bg-img' style={styles.header}></div>
+      <div style={styles.content} className='py-72 text-white'>
         <h1 className='text-5xl font-bold m-3'>Projects</h1>
-        <div className='text-center text-lg'>
+        <div className='text-center text-xl'>
           <p>
             <span className='font-semibold'>Libraries: </span>React.js, Redux,
             React Router Dom,
