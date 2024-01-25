@@ -25,7 +25,7 @@ const styles = {
 const Skills = () => {
   return (
     <div className=''>
-      <div className='text-white h-svh bg-img' style={styles.header}></div>
+      <div className='text-white h-lvh bg-img' style={styles.header}></div>
       <div className='' style={styles.content}>
         <div className='flex flex-wrap justify-center items-center mt-20 lg:mx-48'>
           {skillsdata.map((skill) => {

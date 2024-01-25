@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProjectCard = ({ id, title, description, img, live, code }) => {
   return (
     <div className='w-72 text-white  rounded-lg m-4 border'>
-      <img className='rounded-lg' src={img} alt='project1' />
+      <img loading='lazy' className='rounded-lg' src={img} alt='project1' />
       <div className='py-3 px-3'>
         <h1 className='text-xl'>{title}</h1>
         <p className='text-start'>{description}</p>
