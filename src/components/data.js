@@ -3,7 +3,14 @@ import pro2 from '../assets/project2.png';
 import pro3 from '../assets/project3.png';
 import pro4 from '../assets/project4.png';
 
-const data = [
+import html from '../assets/html-5.png';
+import css from '../assets/css-3.png';
+import js from '../assets/js.png';
+import react from '../assets/atom.png';
+import tailwind from '../assets/tailwindcss-512.png';
+import github from '../assets/github.png';
+
+export const projectsdata = [
   {
     id: '1',
     img: pro1,
@@ -42,4 +49,29 @@ const data = [
   },
 ];
 
-export default data;
+export const skillsdata = [
+  {
+    title: 'HTML',
+    img: html,
+  },
+  {
+    title: 'CSS',
+    img: css,
+  },
+  {
+    title: 'JS',
+    img: js,
+  },
+  {
+    title: 'REACT JS',
+    img: react,
+  },
+  {
+    title: 'TAILWIND ',
+    img: tailwind,
+  },
+  {
+    title: 'Github ',
+    img: github,
+  },
+];

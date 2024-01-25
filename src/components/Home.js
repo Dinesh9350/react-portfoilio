@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className='bg-black '>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
-      <div style={styles.content} className='pt-56 text-white'>
+      <div style={styles.content} className='pt-64 text-white'>
         <p className='text-2xl m-3'>HI, I AM A</p>
         <h1 className='text-5xl font-bold m-3'>React.js Developer</h1>
         <Link to='/projects'>

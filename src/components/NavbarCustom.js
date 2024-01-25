@@ -37,7 +37,7 @@ const NavbarCustom = () => {
         color='blue-gray'
         className='flex items-center gap-x-2 p-1 font-medium'
       >
-        <Link to='/about' className='flex items-center'>
+        <Link to='/skills' className='flex items-center'>
           Skills
         </Link>
       </Typography>
@@ -65,7 +65,7 @@ const NavbarCustom = () => {
   );
 
   return (
-    <Navbar className='nav sticky top-0 bg-transparent  text-white mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4 border-none mt-0'>
+    <Navbar className='nav sticky top-0 bg-transparent  text-white mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4 border-none w-full'>
       <div className='container mx-auto flex items-center justify-between text-blue-gray-900'>
         <Link to='/' className='mr-4 cursor-pointer py-1.5 font-bold'>
           React.js Portfolio
@@ -74,7 +74,7 @@ const NavbarCustom = () => {
 
         <IconButton
           variant='text'
-          className='ml-auto mb-4 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden'
+          className='ml-auto mr-5 mb-4 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden'
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >

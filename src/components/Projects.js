@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import data from '../components/data';
+import { projectsdata } from '../components/data';
 
 const styles = {
   header: {
@@ -25,7 +25,7 @@ const Projects = () => {
   return (
     <div className='bg-black '>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
-      <div style={styles.content} className='py-60 text-white'>
+      <div style={styles.content} className='py-64 text-white'>
         <h1 className='text-5xl font-bold m-3'>Projects</h1>
         <div className='text-center text-lg'>
           <p>
@@ -43,7 +43,7 @@ const Projects = () => {
         </div>
       </div>
       <div className='p-10  flex  flex-wrap justify-center items-center'>
-        {data.map((project) => {
+        {projectsdata.map((project) => {
           return <ProjectCard {...project} />;
         })}
       </div>

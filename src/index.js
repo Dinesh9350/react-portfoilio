@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Home from './components/Home';
 import Projects from './components/Projects';
-import About from './components/Skills';
-import Contact from './components/Contact';
 import ErrorPage from './components/ErrorPage';
+import Contact from './components/Contact';
 import reportWebVitals from './reportWebVitals';
+import Skills from './components/Skills';
 
 const router = createBrowserRouter([
   {
@@ -27,8 +26,8 @@ const router = createBrowserRouter([
         element: <Projects />,
       },
       {
-        path: '/about',
-        element: <About />,
+        path: '/skills',
+        element: <Skills />,
       },
       {
         path: '/contact',
