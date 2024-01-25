@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, title, description, img, live, code }) => {
   return (
-    <div className='w-72 text-white  rounded-lg m-4 border'>
+    <div className='w-72 text-white  rounded-lg m-4 border hover:scale-105 transform duration-500'>
       <img loading='lazy' className='rounded-lg' src={img} alt='project1' />
       <div className='py-3 px-3'>
-        <h1 className='text-xl'>{title}</h1>
+        <h1 className='text-xl font-bold'>{title}</h1>
         <p className='text-start'>{description}</p>
         <div className='flex justify-center mx-5 py-2'>
           <Link to={live} target='blank'>
