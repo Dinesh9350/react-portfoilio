@@ -43,6 +43,9 @@ const Contact = () => {
       );
   };
 
+  const SubmitHandler = () => {
+    alert('Message Sent ✅');
+  };
   return (
     <div className=''>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
@@ -82,6 +85,7 @@ const Contact = () => {
             className='bg-green-500 p-2 px-3 rounded-lg text-xl'
             type='submit'
             value='Send'
+            onClick={SubmitHandler}
           />
         </form>
       </div>
