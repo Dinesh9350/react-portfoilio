@@ -27,7 +27,7 @@ const Skills = () => {
     <div className=''>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
       <div className='' style={styles.content}>
-        <div className='flex flex-wrap justify-center items-center mt-20 lg:mx-48'>
+        <div className='flex flex-wrap justify-center items-center lg:mx-48 mt-16'>
           {skillsdata.map((skill) => {
             return <SkillsCard key={Skills.id} {...skill} />;
           })}

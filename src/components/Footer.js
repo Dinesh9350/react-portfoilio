@@ -30,7 +30,7 @@ const Footer = () => {
           <h3 className='font-bold sm:text-start  py-1'>About me</h3>
           <p className=' py-1'>
             I am Dinesh, a frontend developer having experience of creating
-            several projects using React.js, html, css
+            several projects using React.js, html, css.
           </p>
           <div className='flex justify-center items-center text-2xl sm:justify-start py-2'>
             <span className='mx-2'>
