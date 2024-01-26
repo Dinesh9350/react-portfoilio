@@ -11,7 +11,7 @@ const Home = () => {
     <div className='bg-black'>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
       <div style={styles.content} className='text-white'>
-        <div className=' text-white text-xl flex flex-wrap justify-center items-center h-screen'>
+        <div className=' text-white text-xl flex flex-wrap justify-center items-center h-screen pb-20'>
           <div>
             <p
               data-aos='zoom-out'

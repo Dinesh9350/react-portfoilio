@@ -9,7 +9,7 @@ const Projects = () => {
   );
   return (
     <div className='bg-black '>
-      <div className='text-white h-96 bg-img' style={styles.header}></div>
+      <div className='text-white h-svh bg-img' style={styles.header}></div>
       <div style={styles.content} className=' py-72 text-white'>
         <h1
           data-aos='zoom-out'
