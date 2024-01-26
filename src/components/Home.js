@@ -3,8 +3,10 @@ import React from 'react';
 import IntroImg from '../assets/intro-bg.jpg';
 import { Link } from 'react-router-dom';
 import useBackgroundImg from '../helper/useBackgroundImg';
+import useScrollToTop from '../helper/useScrollToTop';
 
 const Home = () => {
+  const scroll = useScrollToTop();
   const styles = useBackgroundImg(IntroImg);
 
   return (

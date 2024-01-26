@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import useBackgroundImg from '../helper/useBackgroundImg';
+import useScrollToTop from '../helper/useScrollToTop';
 
 const Contact = () => {
+  const scroll = useScrollToTop();
   const styles = useBackgroundImg(
     'https://actis.co.in/wp-content/uploads/2018/03/sales-contact-bg-2.jpg'
   );

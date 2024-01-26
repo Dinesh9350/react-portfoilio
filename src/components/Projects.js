@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import { projectsdata } from '../components/data';
 import useBackgroundImg from '../helper/useBackgroundImg';
 import projectBg from '../assets/projectBg.webp';
+import useScrollToTop from '../helper/useScrollToTop.js';
 
 const Projects = () => {
+  const scroll = useScrollToTop();
   const styles = useBackgroundImg(projectBg);
   return (
     <div className='bg-black '>
