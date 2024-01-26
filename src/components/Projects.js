@@ -2,11 +2,10 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import { projectsdata } from '../components/data';
 import useBackgroundImg from '../helper/useBackgroundImg';
+import projectBg from '../assets/projectBg.webp';
 
 const Projects = () => {
-  const styles = useBackgroundImg(
-    'https://www.pcworld.com/wp-content/uploads/2023/04/sale_301208_article_image-100900761-orig.jpg?quality=50&strip=all'
-  );
+  const styles = useBackgroundImg(projectBg);
   return (
     <div className='bg-black '>
       <div className='text-white h-svh bg-img' style={styles.header}></div>
