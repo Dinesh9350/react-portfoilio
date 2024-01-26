@@ -7,14 +7,14 @@ import pro6 from '../assets/project6.jpg';
 import pro7 from '../assets/project7.jpg';
 import pro8 from '../assets/project8.jpg';
 
-import html from '../assets/html-5.png';
-import css from '../assets/css-3.png';
-import js from '../assets/js.png';
-import react from '../assets/atom.png';
-import tailwind from '../assets/tailwindcss-512.png';
-import github from '../assets/github.png';
-import git from '../assets/git.png';
-import bootstrap from '../assets/bootstrap.png';
+import html from '../assets/html-5.jpg';
+import css from '../assets/css-3.jpg';
+import js from '../assets/js.jpg';
+import react from '../assets/atom.jpg';
+import tailwind from '../assets/tailwindcss-512.jpg';
+import github from '../assets/github.jpg';
+import git from '../assets/git.jpg';
+import bootstrap from '../assets/bootstrap.jpg';
 
 export const projectsdata = [
   {
