@@ -50,8 +50,8 @@ export const projectsdata = [
     description:
       'CarNostalgia Application from Scratch using React. Covered topics: Searching, project structure, destructuring, state management, passing props from parent to child components',
     img: pro4,
-    live: 'https://car-nostalgia.netlify.app/',
-    code: '',
+    live: 'https://carnostalgia.netlify.app/',
+    code: 'https://github.com/Dinesh9350/carnostalgia',
   },
   {
     id: '5',
