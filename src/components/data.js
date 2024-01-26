@@ -75,7 +75,7 @@ export const projectsdata = [
     id: '7',
     title: 'Furlenco',
     description:
-      'Furlenco Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+      'Furlenco is a Furniture selling website. Project uses HTML, CSS, Javascript and media-queries to make website responsive and user-friendly. Having different category of products for different users.',
     img: pro7,
     live: 'https://dinesh9350.github.io/furlenco1/',
     code: 'https://github.com/Dinesh9350/furlenco1',
@@ -84,7 +84,7 @@ export const projectsdata = [
     id: '8',
     title: 'Tesla',
     description:
-      'Tesla Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+      'Tesla is a Car selling website. Project uses HTML, CSS, Javascript and media-queries to make website responsive and user-friendly. Having different section for cars, solar panels etc.',
     img: pro8,
     live: 'https://dinesh9350.github.io/tesla/',
     code: 'https://github.com/Dinesh9350/tesla',
