@@ -1,33 +1,27 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import { projectsdata } from '../components/data';
-
-const styles = {
-  header: {
-    backgroundImage: `url('https://www.pcworld.com/wp-content/uploads/2023/04/sale_301208_article_image-100900761-orig.jpg?quality=50&strip=all')`,
-    height: '100vh',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    position: 'relative',
-  },
-
-  content: {
-    height: '100%',
-    width: '100%',
-    top: '0',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    position: 'absolute',
-  },
-};
+import useBackgroundImg from '../helper/useBackgroundImg';
 
 const Projects = () => {
+  const styles = useBackgroundImg(
+    'https://www.pcworld.com/wp-content/uploads/2023/04/sale_301208_article_image-100900761-orig.jpg?quality=50&strip=all'
+  );
   return (
     <div className='bg-black '>
       <div className='text-white h-96 bg-img' style={styles.header}></div>
       <div style={styles.content} className='py-72 text-white'>
-        <h1 className='text-5xl font-bold m-3'>Projects</h1>
-        <div className='text-center text-xl'>
+        <h1
+          data-aos='zoom-out'
+          data-aos-duration='500'
+          data-aos-once='true'
+          className='text-5xl font-bold m-3'
+        >
+          Projects
+        </h1>
+        <div data-aos='fade-up'
+          data-aos-duration='500'
+          data-aos-once='true'className='text-center text-xl'>
           <p>
             <span className='font-semibold'>Libraries: </span>React.js, Redux,
             React Router Dom,
@@ -44,7 +38,7 @@ const Projects = () => {
       </div>
       <div className='p-10  flex  flex-wrap justify-center items-center'>
         {projectsdata.map((project) => {
-          return <ProjectCard {...project} />;
+          return <ProjectCard key={project.id} {...project} />;
         })}
       </div>
     </div>

@@ -4,12 +4,14 @@ import 'semantic-ui-css/semantic.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import ErrorPage from './components/ErrorPage';
+import reportWebVitals from './reportWebVitals';
 import Home from './components/Home';
 import Projects from './components/Projects';
-import ErrorPage from './components/ErrorPage';
 import Contact from './components/Contact';
-import reportWebVitals from './reportWebVitals';
 import Skills from './components/Skills';
+
+// const Home = lazy(() => import('./components/Home'));
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: (
+          // <Suspense>
+          <Home />
+          // </Suspense>
+        ),
       },
       {
         path: '/projects',

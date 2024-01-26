@@ -50,28 +50,10 @@ export const projectsdata = [
 ];
 
 export const skillsdata = [
-  {
-    title: 'HTML',
-    img: html,
-  },
-  {
-    title: 'CSS',
-    img: css,
-  },
-  {
-    title: 'JS',
-    img: js,
-  },
-  {
-    title: 'REACT JS',
-    img: react,
-  },
-  {
-    title: 'TAILWIND ',
-    img: tailwind,
-  },
-  {
-    title: 'Github ',
-    img: github,
-  },
+  { id: '1', title: 'HTML', img: html },
+  { id: '2', title: 'CSS', img: css },
+  { id: '3', title: 'JS', img: js },
+  { id: '4', title: 'REACT JS', img: react },
+  { id: '5', title: 'TAILWIND ', img: tailwind },
+  { id: '6', title: 'Github ', img: github },
 ];

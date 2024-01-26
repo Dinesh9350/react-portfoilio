@@ -1,26 +1,11 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
-const styles = {
-  header: {
-    backgroundImage: `url('https://actis.co.in/wp-content/uploads/2018/03/sales-contact-bg-2.jpg')`,
-    height: '100vh',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    position: 'relative',
-  },
-
-  content: {
-    height: '100%',
-    width: '100%',
-    top: '0',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    position: 'absolute',
-  },
-};
+import useBackgroundImg from '../helper/useBackgroundImg';
 
 const Contact = () => {
+  const styles = useBackgroundImg(
+    'https://actis.co.in/wp-content/uploads/2018/03/sales-contact-bg-2.jpg'
+  );
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -53,7 +38,13 @@ const Contact = () => {
         className=' text-white text-xl flex justify-center items-center'
         style={styles.content}
       >
-        <form ref={form} onSubmit={sendEmail}>
+        <form
+          data-aos='zoom-out'
+          data-aos-duration='500'
+          data-aos-once='true'
+          ref={form}
+          onSubmit={sendEmail}
+        >
           <h1 className='text-4xl font-bold'>Contact Me</h1>
           <div>
             {/* <label>Name</label> */}

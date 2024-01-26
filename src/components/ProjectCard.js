@@ -1,10 +1,13 @@
 import React from 'react';
-import pro1 from '../assets/project1.png';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, title, description, img, live, code }) => {
   return (
-    <div className='w-72 text-white  rounded-lg m-4 border hover:scale-105 transform duration-500'>
+    <div
+      data-aos='fade-up'
+      data-aos-offset='0'
+      className='w-72 text-white  rounded-lg m-4 border hover:scale-105 transform duration-500'
+    >
       <img loading='lazy' className='rounded-lg' src={img} alt='project1' />
       <div className='py-3 px-3'>
         <h1 className='text-xl font-bold'>{title}</h1>

@@ -3,7 +3,6 @@ import {
   Navbar,
   MobileNav,
   Typography,
-  Button,
   IconButton,
 } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
@@ -19,7 +18,7 @@ const NavbarCustom = () => {
   }, []);
 
   const navList = (
-    <ul className='mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6'>
+    <ul className='mt-2 mb-4 flex flex-col gap-2 text-lg lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6'>
       <Typography
         as='li'
         variant='small'
@@ -67,7 +66,7 @@ const NavbarCustom = () => {
   return (
     <Navbar className='nav sticky top-0 bg-transparent  text-white mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4 border-none w-full'>
       <div className='container mx-auto flex items-center justify-between text-blue-gray-900'>
-        <Link to='/' className='mr-4 cursor-pointer py-1.5 font-bold'>
+        <Link to='/' className='mr-4 cursor-pointer py-1.5 font-bold text-xl'>
           Dinesh
         </Link>
         <div className='hidden lg:block'>{navList}</div>
