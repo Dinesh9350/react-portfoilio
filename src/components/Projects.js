@@ -39,7 +39,7 @@ const Projects = () => {
           </p>
         </div>
       </div>
-      <div className='p-10  flex  flex-wrap justify-center items-center'>
+      <div className='p-10  flex  flex-wrap justify-center items-center lg:mx-20'>
         {projectsdata.map((project) => {
           return <ProjectCard key={project.id} {...project} />;
         })}

@@ -2,6 +2,10 @@ import pro1 from '../assets/project1.png';
 import pro2 from '../assets/project2.png';
 import pro3 from '../assets/project3.png';
 import pro4 from '../assets/project4.png';
+import pro5 from '../assets/project5.png';
+import pro6 from '../assets/project6.png';
+import pro7 from '../assets/project7.png';
+import pro8 from '../assets/project8.png';
 
 import html from '../assets/html-5.png';
 import css from '../assets/css-3.png';
@@ -31,21 +35,57 @@ export const projectsdata = [
   },
   {
     id: '3',
+    title: 'MI Store',
+    description:
+      'MI Store Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+    img: pro3,
+    live: 'https://mi-store7.netlify.app/',
+    code: 'https://github.com/Dinesh9350/mi-store',
+  },
+  {
+    id: '4',
+    title: 'CarNostalgia',
+    description:
+      'CarNostalgia Application from Scratch using React. Covered topics: Searching, project structure, destructuring, state management, passing props from parent to child components',
+    img: pro4,
+    live: 'https://car-nostalgia.netlify.app/',
+    code: '',
+  },
+  {
+    id: '5',
+    title: 'Laptop Store',
+    description:
+      'Laptop Store Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+    img: pro5,
+    live: 'https://laptop-storereact.netlify.app/',
+    code: 'https://github.com/Dinesh9350/Laptop-Store',
+  },
+  {
+    id: '6',
     title: 'Technovera',
     description:
       'Technovera is a Web Development News website. Project uses HTML, CSS, Javascript and media-queries to make website responsive and user-friendly. Dark mode for increasing the readability at night.',
-    img: pro3,
+    img: pro6,
     live: 'https://dinesh9350.github.io/technovera/index.html',
     code: 'https://github.com/Dinesh9350/technovera',
   },
   {
-    id: '4',
-    title: 'MI Store',
+    id: '7',
+    title: 'Furlenco',
     description:
-      'MI Store Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
-    img: pro4,
-    live: 'https://mi-store7.netlify.app/',
-    code: 'https://github.com/Dinesh9350/mi-store',
+      'Furlenco Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+    img: pro7,
+    live: 'https://dinesh9350.github.io/furlenco1/',
+    code: 'https://github.com/Dinesh9350/furlenco1',
+  },
+  {
+    id: '8',
+    title: 'Tesla',
+    description:
+      'Tesla Application from Scratch using React. Covered topics: lifecycle methods, project structure, destructuring, state management, passing props from parent to child components',
+    img: pro8,
+    live: 'https://dinesh9350.github.io/tesla/',
+    code: 'https://github.com/Dinesh9350/tesla',
   },
 ];
 
