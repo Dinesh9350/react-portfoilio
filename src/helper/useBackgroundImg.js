@@ -2,7 +2,7 @@ const useBackgroundImg = (imgUrl) => {
   const styles = {
     header: {
       backgroundImage: `url(${imgUrl})`,
-      height: '100vh',
+      height: '100svh',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
