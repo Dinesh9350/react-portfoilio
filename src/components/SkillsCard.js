@@ -3,8 +3,10 @@ import React from 'react';
 const SkillsCard = ({ title, img }) => {
   return (
     <div
-      data-aos='fade-up'
-      data-aos-offset='0'
+      data-aos='zoom-in'
+      data-aos-duration='1000'
+      data-aos-once='true'
+      data-aos-delay='300'
       className='w-36 text-black bg-white rounded-lg m-2 p-5 hover:scale-95 transform duration-500 lg:w-60 md: sm:m-4'
     >
       <img loading='lazy' className='rounded-lg' src={img} alt='html' />
