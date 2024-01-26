@@ -95,9 +95,9 @@ export const skillsdata = [
   { id: '1', title: 'HTML', img: html },
   { id: '2', title: 'CSS', img: css },
   { id: '3', title: 'JS', img: js },
-  { id: '8', title: 'BOOTSTAP ', img: bootstrap },
-  { id: '4', title: 'REACT JS', img: react },
+  { id: '4', title: 'BOOTSTAP ', img: bootstrap },
   { id: '5', title: 'TAILWIND ', img: tailwind },
-  { id: '6', title: 'GIT ', img: git },
-  { id: '7', title: 'GITHUB ', img: github },
+  { id: '6', title: 'REACT JS', img: react },
+  { id: '7', title: 'GIT ', img: git },
+  { id: '8', title: 'GITHUB ', img: github },
 ];
