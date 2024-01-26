@@ -1,11 +1,11 @@
-import pro1 from '../assets/project1.png';
-import pro2 from '../assets/project2.png';
-import pro3 from '../assets/project3.png';
-import pro4 from '../assets/project4.png';
-import pro5 from '../assets/project5.png';
-import pro6 from '../assets/project6.png';
-import pro7 from '../assets/project7.png';
-import pro8 from '../assets/project8.png';
+import pro1 from '../assets/project1.jpg';
+import pro2 from '../assets/project2.jpg';
+import pro3 from '../assets/project3.jpg';
+import pro4 from '../assets/project4.jpg';
+import pro5 from '../assets/project5.jpg';
+import pro6 from '../assets/project6.jpg';
+import pro7 from '../assets/project7.jpg';
+import pro8 from '../assets/project8.jpg';
 
 import html from '../assets/html-5.png';
 import css from '../assets/css-3.png';
@@ -13,6 +13,8 @@ import js from '../assets/js.png';
 import react from '../assets/atom.png';
 import tailwind from '../assets/tailwindcss-512.png';
 import github from '../assets/github.png';
+import git from '../assets/git.png';
+import bootstrap from '../assets/bootstrap.png';
 
 export const projectsdata = [
   {
@@ -93,7 +95,9 @@ export const skillsdata = [
   { id: '1', title: 'HTML', img: html },
   { id: '2', title: 'CSS', img: css },
   { id: '3', title: 'JS', img: js },
+  { id: '8', title: 'BOOTSTAP ', img: bootstrap },
   { id: '4', title: 'REACT JS', img: react },
   { id: '5', title: 'TAILWIND ', img: tailwind },
-  { id: '6', title: 'Github ', img: github },
+  { id: '6', title: 'GIT ', img: git },
+  { id: '7', title: 'GITHUB ', img: github },
 ];
