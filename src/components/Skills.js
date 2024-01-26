@@ -1,5 +1,5 @@
 import React from 'react';
-import skillsBg from '../assets/skills.png';
+import skillsBg from '../assets/skills.jpg';
 import SkillsCard from './SkillsCard';
 import { skillsdata } from './data';
 import useBackgroundImg from '../helper/useBackgroundImg';
