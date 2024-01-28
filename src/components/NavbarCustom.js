@@ -64,7 +64,7 @@ const NavbarCustom = () => {
   );
 
   return (
-    <Navbar className='nav sticky top-0 bg-transparent text-white mx-auto  max-w-screen-2xl px-4 py-2 lg:px-8 lg:py-4 border-none w-full'>
+    <Navbar className='nav top-0 bg-transparent text-white mx-auto  max-w-screen-2xl px-4 py-2 lg:px-8 lg:py-4 border-none w-full backdrop-blur-sm	'>
       <div className='container mx-auto flex items-center justify-between text-blue-gray-900 lg:px-40'>
         <Link to='/' className='mr-4 cursor-pointer py-1.5 font-bold text-xl'>
           Dinesh
