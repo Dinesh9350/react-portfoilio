@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   FaFacebook,
   FaHome,
@@ -34,13 +35,18 @@ const Footer = () => {
           </p>
           <div className='flex justify-center items-center text-2xl sm:justify-start py-2'>
             <span className='mx-2'>
-              <FaFacebook />
+              <Link
+                to='https://www.linkedin.com/in/dinesh-singh3/'
+                target='blank'
+              >
+                <FaLinkedin />
+              </Link>
             </span>
+
             <span className='mx-2'>
-              <FaTwitter />
-            </span>
-            <span className='mx-2'>
-              <FaLinkedin />
+              <Link to='https://twitter.com/Dinesh62486433' target='blank'>
+                <FaTwitter />
+              </Link>
             </span>
           </div>
         </li>
