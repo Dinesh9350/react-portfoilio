@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FaFacebook,
   FaHome,
   FaLinkedin,
   FaMailBulk,
   FaPhone,
   FaTwitter,
+  FaWhatsapp,
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -46,6 +46,11 @@ const Footer = () => {
             <span className='mx-2'>
               <Link to='https://twitter.com/Dinesh62486433' target='blank'>
                 <FaTwitter />
+              </Link>
+            </span>
+            <span className='mx-2'>
+              <Link to='https://wa.me/919315446968?text=' target='blank'>
+                <FaWhatsapp />
               </Link>
             </span>
           </div>
