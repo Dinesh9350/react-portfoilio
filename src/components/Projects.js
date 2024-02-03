@@ -14,7 +14,7 @@ const Projects = () => {
       <div style={styles.content} className=' py-72 text-white'>
         <h1
           data-aos='zoom-out'
-          data-aos-duration='500'
+          data-aos-duration='1000'
           data-aos-once='true'
           className='text-5xl font-bold m-3'
         >
@@ -22,7 +22,7 @@ const Projects = () => {
         </h1>
         <div
           data-aos='fade-up'
-          data-aos-duration='500'
+          data-aos-duration='1000'
           data-aos-once='true'
           className='text-center text-xl'
         >
