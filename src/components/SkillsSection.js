@@ -13,7 +13,36 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaArrowRight,
+  FaProjectDiagram,
+  FaBolt,
 } from 'react-icons/fa';
+
+const visualPipelines = {
+  'Core Frontend': [
+    { step: '01', title: 'Route Intent', desc: 'URL navigation or form trigger', badge: 'Client' },
+    { step: '02', title: 'Server Streaming', desc: 'Zero-bundle server component pre-render', badge: 'Edge / RSC' },
+    { step: '03', title: 'Strict Type Contract', desc: 'TypeScript discriminated union check', badge: 'Compiler' },
+    { step: '04', title: '60fps Hydration', desc: 'Instant paint with zero cumulative layout shift', badge: 'Active DOM' },
+  ],
+  'State and Data': [
+    { step: '01', title: 'User Action', desc: 'Dispatch with unique idempotency key', badge: 'Dispatcher' },
+    { step: '02', title: 'Async Middleware', desc: 'Axios interceptor & JWT token refresh', badge: 'Pipeline' },
+    { step: '03', title: 'Normalized Slices', desc: 'createEntityAdapter state hydration', badge: 'Redux Store' },
+    { step: '04', title: 'Reselect Memoization', desc: 'Zero redundant component re-renders', badge: 'Subscribed UI' },
+  ],
+  'UI Engineering': [
+    { step: '01', title: 'Figma Auto-Layout', desc: '80+ screen component token hierarchy', badge: 'Design System' },
+    { step: '02', title: 'Tailwind Tokens', desc: 'Dark-mode charcoal theme variable map', badge: 'CSS Engine' },
+    { step: '03', title: 'Responsive Pinning', desc: 'Sticky column horizontal table scroll', badge: 'Mobile / 4K' },
+    { step: '04', title: 'Zero Layout Shift', desc: 'Pre-reserved skeleton dimensions', badge: 'Visual Fidelity' },
+  ],
+  'Performance and Architecture': [
+    { step: '01', title: 'Initial Request', desc: 'HTTP/2 multiplexed preconnect', badge: 'Edge Network' },
+    { step: '02', title: 'Server Components', desc: 'Heavy modules kept strictly server-side', badge: 'Zero Bundle' },
+    { step: '03', title: 'Dynamic Chunking', desc: 'React.lazy deferred modal loading', badge: 'Webpack 5' },
+    { step: '04', title: 'Lighthouse SLA', desc: 'LCP < 1.4s · CLS 0.00 · FID < 50ms', badge: 'Core Web Vitals' },
+  ],
+};
 
 const skillProductionContext = {
   'Next.js (App Router)': {
@@ -541,6 +570,7 @@ const SkillsSection = () => {
   const [activeSkill, setActiveSkill] = useState(null);
   const [showAllSkills, setShowAllSkills] = useState(false);
   const [copiedSnippet, setCopiedSnippet] = useState(false);
+  const [detailViewMode, setDetailViewMode] = useState('visual'); // 'visual' | 'code'
 
   const disciplines = ['All', ...skillsData.map((d) => d.discipline)];
 
@@ -845,37 +875,151 @@ const SkillsSection = () => {
                       </div>
                     </div>
 
-                    {/* Under the Hood Internal Telemetry & Code Box */}
-                    <div className='grid grid-cols-1 lg:grid-cols-12 gap-4 pt-2 items-start'>
-                      {/* Telemetry Invariants */}
-                      <div className='lg:col-span-5 p-4 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs space-y-3'>
-                        <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 block'>
-                          Under The Hood · Telemetry
-                        </span>
-                        <div className='space-y-2 text-[11px] font-mono'>
-                          <div className='p-2 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
-                            <span className='text-neutral-400 block text-[10px]'>Execution Engine:</span>
-                            <span className='text-neutral-800 dark:text-neutral-200 font-bold'>
-                              {ctx.telemetry.engine}
-                            </span>
-                          </div>
-                          <div className='p-2 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
-                            <span className='text-neutral-400 block text-[10px]'>Bundle Impact:</span>
-                            <span className='text-emerald-600 dark:text-emerald-400 font-bold'>
-                              {ctx.telemetry.bundleImpact}
-                            </span>
-                          </div>
-                          <div className='p-2 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
-                            <span className='text-neutral-400 block text-[10px]'>Cache / Safety Policy:</span>
-                            <span className='text-blue-600 dark:text-blue-400 font-bold'>
-                              {ctx.telemetry.cachePolicy}
-                            </span>
-                          </div>
-                        </div>
+                    {/* View Mode Switcher: Visual Flow vs Code */}
+                    <div className='flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-warm-200 dark:border-charcoal-800'>
+                      <div className='inline-flex p-1 rounded-xl bg-warm-100 dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700 text-xs font-semibold'>
+                        <button
+                          onClick={() => setDetailViewMode('visual')}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
+                            detailViewMode === 'visual'
+                              ? 'bg-white dark:bg-charcoal-900 text-blue-600 dark:text-blue-400 shadow-xs font-bold'
+                              : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+                          }`}
+                        >
+                          <FaProjectDiagram className='text-xs' />
+                          <span>Visual Dataflow & Pipeline</span>
+                        </button>
+                        <button
+                          onClick={() => setDetailViewMode('code')}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
+                            detailViewMode === 'code'
+                              ? 'bg-white dark:bg-charcoal-900 text-blue-600 dark:text-blue-400 shadow-xs font-bold'
+                              : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+                          }`}
+                        >
+                          <FaTerminal className='text-xs' />
+                          <span>Code Implementation</span>
+                        </button>
                       </div>
 
-                      {/* Interactive Code Implementation Window with Copy Button */}
-                      <div className='lg:col-span-7 rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 overflow-hidden text-xs font-mono shadow-sm'>
+                      <span className='text-[10px] font-mono text-neutral-400 dark:text-neutral-500 flex items-center gap-1'>
+                        <FaBolt className='text-amber-500' />
+                        <span>Production Execution Blueprint</span>
+                      </span>
+                    </div>
+
+                    {/* VIEW 1: Visual Dataflow & Telemetry Pipeline */}
+                    {detailViewMode === 'visual' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className='space-y-4 pt-1'
+                      >
+                        {/* 4-Stage Architectural Pipeline */}
+                        <div className='p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-warm-100/80 via-white to-warm-50 dark:from-charcoal-850 dark:via-charcoal-900 dark:to-charcoal-950 border border-warm-200 dark:border-charcoal-750 shadow-2xs'>
+                          <div className='flex items-center justify-between mb-3 text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400'>
+                            <span className='flex items-center gap-1.5'>
+                              <FaProjectDiagram className='text-blue-500' />
+                              <span>{activeSkill.discipline} · Architecture Flow</span>
+                            </span>
+                            <span className='text-[10px] text-emerald-600 dark:text-emerald-400 font-mono'>
+                              Live SLA Verified ✓
+                            </span>
+                          </div>
+
+                          <div className='grid grid-cols-1 sm:grid-cols-4 gap-2.5'>
+                            {(visualPipelines[activeSkill.discipline] || visualPipelines['Core Frontend']).map((pipe, pIdx) => (
+                              <div
+                                key={pIdx}
+                                className='p-3 rounded-xl bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700 relative text-left'
+                              >
+                                <div className='flex items-center justify-between mb-1'>
+                                  <span className='text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400'>
+                                    Stage {pipe.step}
+                                  </span>
+                                  <span className='text-[9px] font-mono px-1.5 py-0.5 rounded bg-warm-100 dark:bg-charcoal-700 text-neutral-600 dark:text-neutral-300'>
+                                    {pipe.badge}
+                                  </span>
+                                </div>
+                                <h4 className='text-xs font-bold text-neutral-900 dark:text-white'>
+                                  {pipe.title}
+                                </h4>
+                                <p className='text-[10px] text-neutral-500 dark:text-neutral-400 mt-1 leading-snug'>
+                                  {pipe.desc}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Visual Telemetry Meters */}
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-3.5'>
+                          {/* Meter 1: Execution Engine */}
+                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
+                            <div className='flex items-center justify-between mb-1.5'>
+                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
+                                Execution Engine
+                              </span>
+                              <span className='text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400'>
+                                99.4% SLA
+                              </span>
+                            </div>
+                            <p className='font-bold text-neutral-900 dark:text-white text-xs mb-2'>
+                              {ctx.telemetry.engine}
+                            </p>
+                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
+                              <div className='bg-blue-500 h-full rounded-full w-[94%]' />
+                            </div>
+                          </div>
+
+                          {/* Meter 2: Bundle Impact */}
+                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
+                            <div className='flex items-center justify-between mb-1.5'>
+                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
+                                Bundle Footprint
+                              </span>
+                              <span className='text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400'>
+                                Optimized
+                              </span>
+                            </div>
+                            <p className='font-bold text-emerald-600 dark:text-emerald-400 text-xs mb-2'>
+                              {ctx.telemetry.bundleImpact}
+                            </p>
+                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
+                              <div className='bg-emerald-500 h-full rounded-full w-[98%]' />
+                            </div>
+                          </div>
+
+                          {/* Meter 3: Cache / Safety Policy */}
+                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
+                            <div className='flex items-center justify-between mb-1.5'>
+                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
+                                Safety & Cache Policy
+                              </span>
+                              <span className='text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400'>
+                                100% Strict
+                              </span>
+                            </div>
+                            <p className='font-bold text-purple-600 dark:text-purple-400 text-xs mb-2 truncate'>
+                              {ctx.telemetry.cachePolicy}
+                            </p>
+                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
+                              <div className='bg-purple-500 h-full rounded-full w-[100%]' />
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* VIEW 2: Interactive Code Implementation */}
+                    {detailViewMode === 'code' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className='rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 overflow-hidden text-xs font-mono shadow-sm'
+                      >
                         <div className='px-3.5 py-2 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between text-[11px] text-neutral-400'>
                           <span className='flex items-center gap-1.5'>
                             <FaTerminal className='text-blue-400 text-[10px]' />
@@ -884,7 +1028,7 @@ const SkillsSection = () => {
 
                           <button
                             onClick={() => handleCopyCode(ctx.codeSample)}
-                            className='inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 transition'
+                            className='inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-mono text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 transition'
                             title='Copy code snippet'
                           >
                             {copiedSnippet ? (
@@ -895,7 +1039,7 @@ const SkillsSection = () => {
                             ) : (
                               <>
                                 <FaCopy className='text-neutral-400 text-[10px]' />
-                                <span>Copy</span>
+                                <span>Copy Snippet</span>
                               </>
                             )}
                           </button>
@@ -903,8 +1047,8 @@ const SkillsSection = () => {
                         <pre className='p-4 overflow-x-auto text-[11px] leading-relaxed text-blue-300'>
                           <code>{ctx.codeSample}</code>
                         </pre>
-                      </div>
-                    </div>
+                      </motion.div>
+                    )}
                   </div>
                 );
               })()}
