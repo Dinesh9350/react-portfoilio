@@ -233,6 +233,20 @@ const InteractiveOnboardingDemo = () => {
           </div>
         )}
       </div>
+
+      {/* Internal Working Detailing Strip */}
+      <div className='px-4 sm:px-6 py-3 border-t border-warm-200 dark:border-charcoal-800 bg-warm-50/80 dark:bg-charcoal-950 text-[10px] sm:text-[11px] font-mono text-neutral-500 dark:text-neutral-400 flex flex-wrap items-center justify-between gap-2'>
+        <div className='flex items-center gap-1.5'>
+          <span className='w-2 h-2 rounded-full bg-purple-500' />
+          <span>Signzy Microservice: Online</span>
+        </div>
+        <div className='text-neutral-400'>
+          Latency: <span className='text-emerald-500 font-bold'>1.2s</span>
+        </div>
+        <div className='text-neutral-400 hidden xs:block'>
+          Draft Hydration: Synced
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { experienceData, educationData } from '../data/portfolioData';
 import InteractiveMakerCheckerWorkflow from './InteractiveMakerCheckerWorkflow';
 import {
@@ -18,7 +18,7 @@ import {
 const ExperienceSection = () => {
   const [activeTab, setActiveTab] = useState('timeline'); // 'timeline' | 'simulator' | 'architecture'
   const [selectedRoleIndex, setSelectedRoleIndex] = useState(0);
-  const [expandedAchievement, setExpandedAchievement] = useState(null);
+  const [expandedAchievement, setExpandedAchievement] = useState('securepay-0');
 
   const architectureMatrix = [
     {
@@ -224,24 +224,67 @@ const ExperienceSection = () => {
                             onClick={() =>
                               setExpandedAchievement(isExpanded ? null : `${exp.id}-${idx}`)
                             }
-                            className={`p-4 rounded-xl border transition cursor-pointer ${
+                            className={`p-4 rounded-xl border transition-all duration-200 cursor-pointer ${
                               isExpanded
-                                ? 'bg-blue-50/50 dark:bg-charcoal-850 border-blue-400/50 shadow-xs'
+                                ? 'bg-blue-50/60 dark:bg-charcoal-850 border-blue-400 dark:border-blue-600/60 shadow-xs'
                                 : 'bg-warm-50/80 dark:bg-charcoal-850/80 border-warm-200 dark:border-charcoal-800 hover:border-warm-300 dark:hover:border-charcoal-700'
                             }`}
                           >
-                            <div className='flex items-center justify-between'>
+                            <div className='flex items-center justify-between gap-2'>
                               <h5 className='text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-2'>
-                                <FaCheckCircle className='text-blue-600 dark:text-blue-400 text-xs flex-shrink-0' />
+                                <FaCheckCircle className={`text-xs flex-shrink-0 ${isExpanded ? 'text-blue-600 dark:text-blue-400' : 'text-neutral-400'}`} />
                                 <span>{item.title}</span>
                               </h5>
-                              <div className='text-neutral-400 text-xs'>
-                                {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                              <div className='flex items-center gap-2 text-xs flex-shrink-0'>
+                                <span className={`text-[10px] font-mono font-semibold hidden xs:inline ${isExpanded ? 'text-blue-600 dark:text-blue-400' : 'text-neutral-400'}`}>
+                                  {isExpanded ? 'Hide' : 'Expand'}
+                                </span>
+                                <div className={`text-xs transition-transform ${isExpanded ? 'text-blue-600 dark:text-blue-400' : 'text-neutral-400'}`}>
+                                  {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                                </div>
                               </div>
                             </div>
-                            <p className='text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed pl-5 mt-1.5'>
-                              {item.desc}
-                            </p>
+
+                            <AnimatePresence>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className='mt-3 pt-3 border-t border-warm-200 dark:border-charcoal-750/70 space-y-2.5 text-xs'
+                                >
+                                  <p className='text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed pl-5'>
+                                    {item.desc}
+                                  </p>
+
+                                  {/* Internal Architecture & Implementation Pattern */}
+                                  <div className='ml-5 p-3 rounded-xl bg-warm-100/70 dark:bg-charcoal-800/80 border border-warm-200 dark:border-charcoal-700 space-y-1 text-left'>
+                                    <div className='flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-mono font-bold text-[11px]'>
+                                      <FaShieldAlt className='text-[10px]' />
+                                      <span>Internal Architecture & Implementation Pattern:</span>
+                                    </div>
+                                    <p className='text-[11px] text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans'>
+                                      {exp.id === 'securepay'
+                                        ? idx === 0
+                                          ? 'Constructed Next.js App Router layout with React Server Components (RSC) streaming for fast TTFB, isolating stateful tables within modular client boundaries.'
+                                          : idx === 1
+                                          ? 'Integrated UPI Intent deep-linking with automated fallback polling and client-side card Luhn checksum validation before triggering 3D-Secure 2.0 gateway challenge.'
+                                          : idx === 2
+                                          ? 'Engineered 6-step wizard using Formik + Yup schema with draft hydration from localStorage and asynchronous webhook listeners for Signzy PAN & bank penny-drop confirmation.'
+                                          : idx === 3
+                                          ? 'Built role-gated Redux slices with dual-authorization boundaries (Super Admin, Manager, Merchant Operator), preventing self-approval of commercial payouts.'
+                                          : 'Built high-throughput transaction tables with URL-synced search params, memoized column sorting, and edge cache invalidation for instant CSV statement exports.'
+                                        : idx === 0
+                                        ? 'Constructed scalable client applications utilizing Redux Toolkit for centralized, predictable state management across multi-view workflows.'
+                                        : idx === 1
+                                        ? 'Transformed 80+ high-fidelity Figma mockups into accessible, pixel-perfect Tailwind CSS and Material UI components with responsive breakpoints.'
+                                        : 'Collaborated across 3 cross-functional teams in 2-week Agile sprints with code reviews and structured Git workflows, maintaining zero merge conflicts.'}
+                                    </p>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </motion.div>
                         );
                       })}
@@ -313,7 +356,7 @@ const ExperienceSection = () => {
           >
             <div className='p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50 text-xs text-purple-900 dark:text-purple-300 leading-relaxed'>
               <strong className='font-bold'>Why this matters: </strong>
-              At SecurePay, financial compliance requires strict segregation of duties. Dinesh engineered the dual-party authorization workflow where an operational Maker initiates a payout batch, and an authorized Compliance Checker inspects identity credentials, checks penny-drop logs, and confirms authorization via multi-factor authentication.
+              At SecurePay, financial compliance requires strict segregation of duties. I engineered the dual-party authorization workflow where an operational Maker initiates a payout batch, and an authorized Compliance Checker inspects identity credentials, checks penny-drop logs, and confirms authorization via multi-factor authentication.
             </div>
 
             <InteractiveMakerCheckerWorkflow />
@@ -330,7 +373,7 @@ const ExperienceSection = () => {
           >
             <div className='p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 text-xs text-blue-900 dark:text-blue-300 leading-relaxed'>
               <strong className='font-bold'>Core Architectural Decisions: </strong>
-              Breakdown of rendering models, state boundaries, and key technical capabilities engineered by Dinesh across the 4 SecurePay systems.
+              Breakdown of rendering models, state boundaries, and key technical capabilities engineered across the 4 SecurePay systems.
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>

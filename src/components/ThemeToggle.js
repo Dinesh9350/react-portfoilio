@@ -12,13 +12,17 @@ const ThemeToggle = ({ className = '' }) => {
       type='button'
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      className={`p-2 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
+      className={`p-2 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-xs active:scale-95 flex items-center justify-center ${
         isDark
-          ? 'bg-charcoal-850 border-charcoal-700 text-amber-400 hover:bg-charcoal-800 hover:text-amber-300'
-          : 'bg-warm-100 border-warm-300 text-charcoal-700 hover:bg-warm-200 hover:text-charcoal-900'
+          ? 'bg-charcoal-850 border-charcoal-700 text-amber-400 hover:bg-charcoal-800 hover:text-amber-300 hover:border-amber-500/40'
+          : 'bg-warm-100 border-warm-300 text-indigo-600 hover:bg-warm-200 hover:text-indigo-800 hover:border-indigo-400/50'
       } ${className}`}
     >
-      {isDark ? <FaSun className='w-4 h-4' /> : <FaMoon className='w-4 h-4' />}
+      {isDark ? (
+        <FaSun className='w-4 h-4 transition-transform hover:rotate-45' />
+      ) : (
+        <FaMoon className='w-4 h-4 transition-transform hover:-rotate-12' />
+      )}
     </button>
   );
 };

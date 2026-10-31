@@ -302,6 +302,20 @@ const InteractiveCheckoutDemo = () => {
           </div>
         )}
       </div>
+
+      {/* Internal Security & State Machine Inspector */}
+      <div className='px-4 sm:px-6 py-3 border-t border-warm-200 dark:border-charcoal-800 bg-warm-50/80 dark:bg-charcoal-950 text-[10px] sm:text-[11px] font-mono text-neutral-500 dark:text-neutral-400 flex flex-wrap items-center justify-between gap-2'>
+        <div className='flex items-center gap-1.5'>
+          <span className='w-2 h-2 rounded-full bg-emerald-500' />
+          <span>Luhn Check: Valid</span>
+        </div>
+        <div className='text-neutral-400'>
+          Method: <span className='text-blue-500 font-bold'>{method.toUpperCase()}</span>
+        </div>
+        <div className='text-neutral-400 hidden xs:block'>
+          TLS 1.3 · HMAC-SHA256
+        </div>
+      </div>
     </div>
   );
 };

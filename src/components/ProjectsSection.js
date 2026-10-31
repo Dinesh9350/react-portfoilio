@@ -116,7 +116,7 @@ const ProjectsSection = ({ onSelectCaseStudy }) => {
                 }`}
               >
                 <FaTerminal className='text-xs' />
-                <span>macOS Code</span>
+                <span>Code</span>
               </button>
             </div>
           </div>

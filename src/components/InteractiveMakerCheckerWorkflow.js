@@ -382,7 +382,7 @@ const InteractiveMakerCheckerWorkflow = () => {
           <div className='p-3.5 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40 text-[11px] text-neutral-600 dark:text-neutral-400 space-y-1'>
             <div className='font-bold text-neutral-900 dark:text-white flex items-center gap-1.5 font-mono'>
               <FaShieldAlt className='text-blue-500' />
-              <span>Dinesh's Implementation at SecurePay</span>
+              <span>Production Implementation at SecurePay</span>
             </div>
             <p className='leading-relaxed'>
               Built using Redux Toolkit state slices with role permission gates, optimistic UI state transitions, and asynchronous retry logic for webhook confirmations.

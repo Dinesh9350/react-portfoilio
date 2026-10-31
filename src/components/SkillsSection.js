@@ -175,14 +175,31 @@ const SkillsSection = () => {
                     </span>
                   </div>
 
-                  <span className='text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-warm-200/60 dark:bg-charcoal-750 text-neutral-700 dark:text-neutral-300 flex-shrink-0'>
+                  <span
+                    className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                      s.level === 'Production'
+                        ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
+                        : 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
+                    }`}
+                  >
                     {s.level}
                   </span>
                 </div>
 
                 <div className='flex items-center justify-between pt-2 border-t border-warm-100 dark:border-charcoal-800/80 text-[11px]'>
-                  <span className='text-[10px] font-mono text-neutral-400'>
-                    {s.discipline}
+                  <span className='text-[10px] font-mono text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5'>
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        s.discipline === 'Core Frontend'
+                          ? 'bg-blue-500'
+                          : s.discipline === 'State and Data'
+                          ? 'bg-purple-500'
+                          : s.discipline === 'UI Engineering'
+                          ? 'bg-emerald-500'
+                          : 'bg-cyan-500'
+                      }`}
+                    />
+                    <span>{s.discipline}</span>
                   </span>
                   {hasContext ? (
                     <span className='text-blue-600 dark:text-blue-400 font-semibold font-mono text-[10px] flex items-center gap-1'>
@@ -190,7 +207,7 @@ const SkillsSection = () => {
                       <span>→</span>
                     </span>
                   ) : (
-                    <span className='text-neutral-400 text-[10px]'>Verified</span>
+                    <span className='text-neutral-400 font-mono text-[10px]'>Verified ✓</span>
                   )}
                 </div>
               </motion.div>
@@ -276,7 +293,7 @@ const SkillsSection = () => {
               ) : (
                 <div className='text-xs text-neutral-600 dark:text-neutral-300'>
                   <p className='leading-relaxed'>
-                    <strong className='text-neutral-900 dark:text-white'>{activeSkill.name}</strong> was actively applied by Dinesh across client and internal production web systems. Highlight: {activeSkill.highlight}. Categorized as {activeSkill.level} competence.
+                    <strong className='text-neutral-900 dark:text-white'>{activeSkill.name}</strong> is utilized across production engineering workflows. Highlight: {activeSkill.highlight}. Competence: {activeSkill.level}.
                   </p>
                 </div>
               )}

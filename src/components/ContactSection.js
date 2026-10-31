@@ -278,9 +278,9 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label className='block text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2 font-mono flex items-center justify-between'>
+                <label className='text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2 font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-1'>
                   <span>Message</span>
-                  <span className='text-[10px] text-blue-600 dark:text-blue-400 font-normal'>
+                  <span className='text-[10px] text-blue-600 dark:text-blue-400 font-medium normal-case'>
                     Topic: {inquiryTemplates[inquiryType]?.subject}
                   </span>
                 </label>
