@@ -1,5 +1,5 @@
 import React from 'react';
-import { aboutData } from './data';
+import { aboutData, personalInfo } from '../data/portfolioData';
 import { FaCheckCircle } from 'react-icons/fa';
 
 const AboutSection = () => {
@@ -7,12 +7,12 @@ const AboutSection = () => {
     <section id='about' className='py-20 sm:py-28 border-b border-warm-200 dark:border-charcoal-800/80 bg-warm-50/50 dark:bg-charcoal-950/40'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6'>
         {/* Section Header */}
-        <div className='text-left mb-12'>
-          <span className='text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2 block'>
-            Background & Philosophy
+        <div className='text-left mb-14'>
+          <span className='text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2 block font-mono'>
+            Engineering Philosophy
           </span>
           <h2 className='text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
-            About Dinesh Singh
+            About {personalInfo.name}
           </h2>
           <p className='text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mt-2 leading-relaxed'>
             A perspective on frontend engineering shaped by real product deadlines, high-stakes fintech operations, and user trust.
@@ -25,7 +25,7 @@ const AboutSection = () => {
             {aboutData.narrative.map((paragraph, idx) => (
               <p
                 key={idx}
-                className='text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed p-4 rounded-xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
+                className='text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed p-5 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
               >
                 {paragraph}
               </p>
@@ -33,15 +33,15 @@ const AboutSection = () => {
           </div>
 
           {/* Principles Column */}
-          <div className='lg:col-span-5 space-y-4'>
-            <h3 className='text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2'>
+          <div className='lg:col-span-5 space-y-3.5'>
+            <h3 className='text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 font-mono'>
               Core Engineering Principles
             </h3>
 
             {aboutData.principles.map((principle, idx) => (
               <div
                 key={idx}
-                className='p-4 rounded-xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
+                className='p-4 sm:p-5 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
               >
                 <h4 className='text-sm font-bold text-neutral-900 dark:text-white mb-1 flex items-center gap-2'>
                   <FaCheckCircle className='text-blue-600 dark:text-blue-400 text-xs flex-shrink-0' />

@@ -1,6 +1,6 @@
 import React from 'react';
+import { personalInfo } from '../data/portfolioData';
 import { FaGithub, FaLinkedin, FaArrowUp } from 'react-icons/fa';
-import { profileData } from './data';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -8,36 +8,36 @@ const Footer = () => {
   };
 
   return (
-    <footer className='border-t border-warm-200 dark:border-charcoal-800 bg-white dark:bg-charcoal-950 py-8 text-neutral-600 dark:text-neutral-400 text-xs'>
+    <footer className='border-t border-warm-200 dark:border-charcoal-800 bg-white dark:bg-charcoal-950 py-8 text-neutral-600 dark:text-neutral-400 text-xs text-left'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4'>
         {/* Identity & Copyright */}
         <div className='flex items-center gap-2'>
           <span className='font-bold text-neutral-900 dark:text-white'>
-            {profileData.name}
+            {personalInfo.name}
           </span>
           <span>·</span>
-          <span>Frontend Developer (2+ Years Experience)</span>
+          <span>{personalInfo.role}</span>
           <span>·</span>
-          <span>© {new Date().getFullYear()}</span>
+          <span className='font-mono'>© {new Date().getFullYear()}</span>
         </div>
 
         {/* Links & Return to Top */}
         <div className='flex items-center gap-4'>
           <a
-            href={profileData.github}
+            href={personalInfo.github}
             target='_blank'
             rel='noreferrer'
             className='hover:text-neutral-900 dark:hover:text-white transition'
-            aria-label='GitHub'
+            aria-label='GitHub Profile'
           >
             <FaGithub className='text-sm' />
           </a>
           <a
-            href={profileData.linkedin}
+            href={personalInfo.linkedin}
             target='_blank'
             rel='noreferrer'
             className='hover:text-blue-600 dark:hover:text-blue-400 transition'
-            aria-label='LinkedIn'
+            aria-label='LinkedIn Profile'
           >
             <FaLinkedin className='text-sm' />
           </a>

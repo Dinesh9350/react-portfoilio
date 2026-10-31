@@ -1,25 +1,30 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
+import { MemoryRouter } from 'react-router-dom';
 import Home from './components/Home';
+import { ThemeProvider } from './context/ThemeContext';
 
-test('renders portfolio branding and hero headline', () => {
+test('renders complete portfolio redesign with hero headline and positioning', () => {
   render(
-    <MemoryRouter initialEntries={['/']}>
-      <Routes>
-        <Route path='/' element={<App />}>
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
-    </MemoryRouter>
+    <ThemeProvider>
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    </ThemeProvider>
   );
 
-  const brandElements = screen.getAllByText(/Dinesh Singh/i);
-  expect(brandElements.length).toBeGreaterThan(0);
+  // Check branding
+  const nameElements = screen.getAllByText(/Dinesh Singh/i);
+  expect(nameElements.length).toBeGreaterThan(0);
 
-  const headline = screen.getByText(/Building polished, scalable web experiences/i);
+  // Check headline
+  const headline = screen.getByText(/Engineering thoughtful interfaces for complex products/i);
   expect(headline).toBeInTheDocument();
 
-  const eyebrow = screen.getByText(/Frontend Developer · 2\+ Years of Experience/i);
-  expect(eyebrow).toBeInTheDocument();
+  // Check SecurePay production experience (appears in multiple sections)
+  const securePayMentions = screen.getAllByText(/SecurePay/i);
+  expect(securePayMentions.length).toBeGreaterThan(0);
+
+  // Check interactive component previews
+  const dashboardBadge = screen.getByText(/SecurePay Merchant Portal v2.4/i);
+  expect(dashboardBadge).toBeInTheDocument();
 });
