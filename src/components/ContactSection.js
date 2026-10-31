@@ -10,11 +10,37 @@ import {
   FaCopy,
   FaCheck,
   FaPaperPlane,
+  FaBriefcase,
+  FaComments,
+  FaCodeBranch,
 } from 'react-icons/fa';
 
 const ContactSection = () => {
   const [copied, setCopied] = useState(false);
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [inquiryType, setInquiryType] = useState('full-time');
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const inquiryTemplates = {
+    'full-time': {
+      subject: 'Frontend Engineering Opportunity',
+      placeholder:
+        'Hi Dinesh, we have an open Frontend / Software Developer role on our team working with React and Next.js. I’d love to connect...',
+    },
+    contract: {
+      subject: 'Frontend Consulting / Contract Project',
+      placeholder:
+        'Hi Dinesh, we need a senior frontend engineer to build or optimize a web application / dashboard flow...',
+    },
+    discussion: {
+      subject: 'Engineering & Architecture Discussion',
+      placeholder:
+        'Hi Dinesh, I saw your fintech case studies and would love to exchange thoughts on frontend architecture and Maker-Checker patterns...',
+    },
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -24,9 +50,10 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personalInfo.email}?subject=Frontend Opportunity from ${encodeURIComponent(
-      formState.name
-    )}&body=${encodeURIComponent(formState.message)}%0A%0AFrom: ${encodeURIComponent(
+    const template = inquiryTemplates[inquiryType] || inquiryTemplates['full-time'];
+    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+      `${template.subject} - from ${formState.name}`
+    )}&body=${encodeURIComponent(formState.message || template.placeholder)}%0A%0AFrom: ${encodeURIComponent(
       formState.name
     )} (${encodeURIComponent(formState.email)})`;
     window.location.href = mailtoUrl;
@@ -165,7 +192,7 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* Contact Message Form */}
+          {/* Interactive Contact Message Form */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -173,12 +200,52 @@ const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className='lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
           >
-            <h3 className='text-base font-bold text-neutral-900 dark:text-white mb-2'>
-              Send a Direct Message
+            <h3 className='text-base font-bold text-neutral-900 dark:text-white mb-1'>
+              Send an Interactive Inquiry
             </h3>
-            <p className='text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mb-6'>
-              Submit the form below to initiate an email directly to Dinesh Singh.
+            <p className='text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mb-5'>
+              Select your inquiry topic to auto-format the message starter:
             </p>
+
+            {/* Inquiry Topic Buttons */}
+            <div className='flex flex-wrap gap-2 mb-6'>
+              <button
+                type='button'
+                onClick={() => setInquiryType('full-time')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                  inquiryType === 'full-time'
+                    ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
+                    : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'
+                }`}
+              >
+                <FaBriefcase className='text-[10px]' />
+                <span>Full-Time Role</span>
+              </button>
+              <button
+                type='button'
+                onClick={() => setInquiryType('contract')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                  inquiryType === 'contract'
+                    ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
+                    : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'
+                }`}
+              >
+                <FaCodeBranch className='text-[10px]' />
+                <span>Contract / Consulting</span>
+              </button>
+              <button
+                type='button'
+                onClick={() => setInquiryType('discussion')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                  inquiryType === 'discussion'
+                    ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
+                    : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'
+                }`}
+              >
+                <FaComments className='text-[10px]' />
+                <span>Tech Architecture</span>
+              </button>
+            </div>
 
             <form onSubmit={handleSubmit} className='space-y-4'>
               <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
@@ -211,15 +278,17 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label className='block text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2 font-mono'>
-                  Message
+                <label className='block text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2 font-mono flex items-center justify-between'>
+                  <span>Message</span>
+                  <span className='text-[10px] text-blue-600 dark:text-blue-400 font-normal'>
+                    Topic: {inquiryTemplates[inquiryType]?.subject}
+                  </span>
                 </label>
                 <textarea
-                  required
                   rows='4'
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  placeholder='Tell me about your team, tech stack, or the opportunity...'
+                  placeholder={inquiryTemplates[inquiryType]?.placeholder}
                   className='w-full px-4 py-2.5 rounded-xl text-sm bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-blue-500 transition'
                 />
               </div>
@@ -231,7 +300,7 @@ const ContactSection = () => {
                 className='w-full py-3 px-6 rounded-xl text-sm font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition flex items-center justify-center gap-2 shadow-xs'
               >
                 <FaPaperPlane className='text-xs' />
-                <span>Send Message via Email Client</span>
+                <span>Send Direct Inquiry via Email</span>
               </motion.button>
             </form>
           </motion.div>
