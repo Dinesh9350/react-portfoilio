@@ -190,42 +190,54 @@ const getSkillColorTokens = (name, discipline) => {
   if (name.includes('React') || name.includes('Next')) {
     return {
       dot: 'bg-cyan-500',
-      badge: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/30',
-      borderHover: 'hover:border-cyan-500/50',
+      badge: 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border-cyan-500/40 shadow-xs',
+      cardBg: 'bg-gradient-to-br from-cyan-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-cyan-500/30 dark:border-cyan-500/30',
+      borderHover: 'hover:border-cyan-500/70 hover:shadow-cyan-500/10',
+      tag: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
     };
   }
   if (name.includes('TypeScript') || name.includes('JavaScript')) {
     return {
       dot: 'bg-blue-500',
-      badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30',
-      borderHover: 'hover:border-blue-500/50',
+      badge: 'bg-blue-500/15 text-blue-600 dark:text-blue-300 border-blue-500/40 shadow-xs',
+      cardBg: 'bg-gradient-to-br from-blue-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-blue-500/30 dark:border-blue-500/30',
+      borderHover: 'hover:border-blue-500/70 hover:shadow-blue-500/10',
+      tag: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
     };
   }
   if (name.includes('Redux') || name.includes('State')) {
     return {
       dot: 'bg-purple-500',
-      badge: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30',
-      borderHover: 'hover:border-purple-500/50',
+      badge: 'bg-purple-500/15 text-purple-600 dark:text-purple-300 border-purple-500/40 shadow-xs',
+      cardBg: 'bg-gradient-to-br from-purple-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-purple-500/30 dark:border-purple-500/30',
+      borderHover: 'hover:border-purple-500/70 hover:shadow-purple-500/10',
+      tag: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
     };
   }
   if (name.includes('Tailwind') || name.includes('Material') || name.includes('Responsive')) {
     return {
       dot: 'bg-teal-500',
-      badge: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/30',
-      borderHover: 'hover:border-teal-500/50',
+      badge: 'bg-teal-500/15 text-teal-600 dark:text-teal-300 border-teal-500/40 shadow-xs',
+      cardBg: 'bg-gradient-to-br from-teal-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-teal-500/30 dark:border-teal-500/30',
+      borderHover: 'hover:border-teal-500/70 hover:shadow-teal-500/10',
+      tag: 'bg-teal-500/10 text-teal-600 dark:text-teal-400',
     };
   }
   if (name.includes('Signzy') || name.includes('API') || name.includes('Formik')) {
     return {
       dot: 'bg-emerald-500',
-      badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
-      borderHover: 'hover:border-emerald-500/50',
+      badge: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border-emerald-500/40 shadow-xs',
+      cardBg: 'bg-gradient-to-br from-emerald-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-emerald-500/30 dark:border-emerald-500/30',
+      borderHover: 'hover:border-emerald-500/70 hover:shadow-emerald-500/10',
+      tag: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
     };
   }
   return {
     dot: 'bg-indigo-500',
-    badge: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/30',
-    borderHover: 'hover:border-indigo-500/50',
+    badge: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border-indigo-500/40 shadow-xs',
+    cardBg: 'bg-gradient-to-br from-indigo-500/[0.08] via-transparent to-white dark:to-charcoal-900 border-indigo-500/30 dark:border-indigo-500/30',
+    borderHover: 'hover:border-indigo-500/70 hover:shadow-indigo-500/10',
+    tag: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400',
   };
 };
 
@@ -333,21 +345,21 @@ const SkillsSection = () => {
                 key={idx}
                 whileHover={{ y: -2 }}
                 onClick={() => setActiveSkill(isSelected ? null : s)}
-                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 ${
+                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 shadow-xs ${
                   isSelected
-                    ? 'bg-blue-50/90 dark:bg-charcoal-850 border-blue-500 shadow-md ring-1 ring-blue-500/30'
-                    : `bg-white dark:bg-charcoal-900 border-warm-200 dark:border-charcoal-800 ${colors.borderHover} hover:shadow-xs`
+                    ? 'bg-blue-50/90 dark:bg-charcoal-850 border-blue-500 shadow-md ring-2 ring-blue-500/40'
+                    : `${colors.cardBg} ${colors.borderHover} hover:shadow-md`
                 }`}
               >
                 <div className='flex items-start justify-between gap-2'>
                   <div>
                     <div className='flex items-center gap-2'>
-                      <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
+                      <span className={`w-2.5 h-2.5 rounded-full ${colors.dot} shadow-xs shadow-current`} />
                       <span className='font-bold text-sm text-neutral-900 dark:text-white block'>
                         {s.name}
                       </span>
                     </div>
-                    <span className='text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-1 pl-4'>
+                    <span className='text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-1 pl-4 font-sans'>
                       {s.highlight}
                     </span>
                   </div>
@@ -365,7 +377,7 @@ const SkillsSection = () => {
                 </div>
 
                 <div className='flex items-center justify-between pt-2 border-t border-warm-100 dark:border-charcoal-800/80 text-[11px]'>
-                  <span className='text-[10px] font-mono text-neutral-500 dark:text-neutral-400'>
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold ${colors.tag}`}>
                     {s.discipline}
                   </span>
                   {hasContext ? (
