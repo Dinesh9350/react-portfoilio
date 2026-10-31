@@ -109,11 +109,11 @@ const dailyToolkit = [
     desc: 'Continuous Core Web Vitals auditing, flamegraph analysis, and memory leak prevention.',
   },
   {
-    name: 'Signzy Verification APIs',
-    role: 'Fintech Microservices',
-    badge: 'KYC Engine',
+    name: 'Git & GitHub Workflows',
+    role: 'Version Control & Shipping',
+    badge: 'Daily Shipper',
     color: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
-    desc: 'Penny-drop bank verification and real-time PAN OCR integration in 6-step onboarding.',
+    desc: 'Feature branching, atomic commit hygiene, pull request code reviews, and production deployment syncing.',
   },
 ];
 
