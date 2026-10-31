@@ -286,7 +286,7 @@ export const skillsData = [
     ],
   },
   {
-    discipline: 'Performance and Architecture',
+    discipline: 'Performance',
     description: 'Web vitals, optimization techniques, and scalable patterns.',
     skills: [
       { name: 'Next.js Server Components', level: 'Production', highlight: 'Zero-Bundle Shell Pre-rendering' },

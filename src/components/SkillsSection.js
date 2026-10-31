@@ -566,7 +566,7 @@ const getSkillColorTokens = (skillName, discipline) => {
         borderHover: 'hover:border-emerald-400 dark:hover:border-emerald-500/60',
         tag: 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60',
       };
-    case 'Performance and Architecture':
+    case 'Performance':
       return {
         dot: 'bg-amber-500',
         badge: 'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400',
