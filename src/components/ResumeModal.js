@@ -80,8 +80,8 @@ const ResumeModal = ({ isOpen, onClose }) => {
                 {personalInfo.email}
               </a>
               <span>•</span>
-              <a href={personalInfo.linkedin} target='_blank' rel='noreferrer' className='hover:underline'>
-                LinkedIn
+              <a href={personalInfo.linkedin} target='_blank' rel='noreferrer' className='hover:underline text-blue-600 dark:text-blue-400 font-semibold'>
+                LinkedIn (dinesh-singh3)
               </a>
               <span>•</span>
               <a href={personalInfo.github} target='_blank' rel='noreferrer' className='hover:underline'>

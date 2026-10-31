@@ -11,6 +11,7 @@ export const personalInfo = {
   phone: '+91 9315446968',
   github: 'https://github.com/Dinesh9350',
   linkedin: 'https://www.linkedin.com/in/dinesh-singh3/',
+  linkedinHandle: 'dinesh-singh3',
   resumeUrl: '/Dinesh-Singh-Resume.pdf',
   stats: [
     { value: '2+', label: 'Years Experience', sub: 'Production engineering' },

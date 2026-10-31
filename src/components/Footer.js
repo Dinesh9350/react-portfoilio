@@ -36,10 +36,12 @@ const Footer = () => {
             href={personalInfo.linkedin}
             target='_blank'
             rel='noreferrer'
-            className='hover:text-blue-600 dark:hover:text-blue-400 transition'
-            aria-label='LinkedIn Profile'
+            className='hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5'
+            aria-label='LinkedIn Profile (dinesh-singh3)'
+            title='LinkedIn (dinesh-singh3)'
           >
             <FaLinkedin className='text-sm' />
+            <span className='font-mono text-[11px] font-semibold hidden sm:inline'>dinesh-singh3</span>
           </a>
           <button
             onClick={scrollToTop}

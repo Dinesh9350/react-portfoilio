@@ -17,8 +17,14 @@ test('renders complete portfolio redesign with hero headline and positioning', (
   expect(nameElements.length).toBeGreaterThan(0);
 
   // Check headline
-  const headline = screen.getByText(/Engineering thoughtful interfaces for complex products/i);
+  const headline = screen.getByText((content, element) => {
+    return element.tagName.toLowerCase() === 'h1' && /thoughtful interfaces/i.test(element.textContent);
+  });
   expect(headline).toBeInTheDocument();
+
+  // Check LinkedIn handle
+  const linkedInMentions = screen.getAllByText(/dinesh-singh3/i);
+  expect(linkedInMentions.length).toBeGreaterThan(0);
 
   // Check SecurePay production experience (appears in multiple sections)
   const securePayMentions = screen.getAllByText(/SecurePay/i);

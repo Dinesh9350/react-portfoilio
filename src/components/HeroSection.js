@@ -1,9 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 import InteractiveHeroPreview from './InteractiveHeroPreview';
 import { FaArrowRight, FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
-const HeroSection = ({ onOpenResume }) => {
+const HeroSection = () => {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -12,63 +13,123 @@ const HeroSection = ({ onOpenResume }) => {
   };
 
   return (
-    <section id='home' className='pt-28 sm:pt-36 pb-16 sm:pb-24 border-b border-warm-200 dark:border-charcoal-800/80'>
-      <div className='max-w-6xl mx-auto px-4 sm:px-6'>
+    <section id='home' className='relative pt-28 sm:pt-36 pb-16 sm:pb-24 border-b border-warm-200 dark:border-charcoal-800/80 overflow-hidden bg-grid-pattern'>
+      {/* Animated Ambient Radial Glows */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.15, 0.25, 0.15],
+          x: [0, 20, 0],
+          y: [0, -15, 0],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className='absolute -top-32 left-1/4 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl pointer-events-none'
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.12, 0.22, 0.12],
+          x: [0, -25, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className='absolute top-20 right-10 w-96 h-96 rounded-full bg-purple-500/15 blur-3xl pointer-events-none'
+      />
+
+      <div className='max-w-6xl mx-auto px-4 sm:px-6 relative z-10'>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center'>
           {/* Left Column: Positioning & Copy */}
           <div className='lg:col-span-7 text-left'>
             {/* Identity & Eyebrow */}
-            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-5'>
-              <span className='w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse'></span>
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className='inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50/80 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/60 backdrop-blur-md mb-6 shadow-xs'
+            >
+              <span className='relative flex h-2 w-2'>
+                <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75'></span>
+                <span className='relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-400'></span>
+              </span>
               <span>{personalInfo.name} · {personalInfo.techBadge}</span>
-            </div>
+            </motion.div>
 
             {/* Headline */}
-            <h1 className='text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.14] mb-6'>
-              {personalInfo.headline}
-            </h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+              className='text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.14] mb-6'
+            >
+              Engineering{' '}
+              <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400'>
+                thoughtful interfaces
+              </span>{' '}
+              for complex products.
+            </motion.h1>
 
             {/* Supporting Copy */}
-            <p className='text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-8'>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+              className='text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-8'
+            >
               {personalInfo.supportingCopy}
-            </p>
+            </motion.p>
 
             {/* CTAs */}
-            <div className='flex flex-wrap items-center gap-3 sm:gap-4 mb-8'>
-              <button
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+              className='flex flex-wrap items-center gap-3 sm:gap-4 mb-8'
+            >
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => scrollTo('projects')}
-                className='px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition shadow-sm flex items-center gap-2 group'
+                className='px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition shadow-sm hover:shadow-md flex items-center gap-2 group'
               >
                 <span>Explore My Work</span>
-                <FaArrowRight className='text-xs group-hover:translate-x-0.5 transition-transform' />
-              </button>
+                <FaArrowRight className='text-xs group-hover:translate-x-1 transition-transform' />
+              </motion.button>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 href={personalInfo.resumeUrl}
                 download='Dinesh-Singh-Resume.pdf'
-                className='px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center gap-2 shadow-xs'
+                className='px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center gap-2 shadow-xs hover:border-neutral-400 dark:hover:border-charcoal-600'
               >
                 <FaDownload className='text-xs text-blue-600 dark:text-blue-400' />
                 <span>Download Resume</span>
-              </a>
+              </motion.a>
 
-              <button
+              <motion.button
+                whileHover={{ x: 3 }}
                 onClick={() => scrollTo('contact')}
                 className='text-sm font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white px-2 py-3 underline-offset-4 hover:underline transition'
               >
                 Contact Me →
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Experience Indicator & Social Links */}
-            <div className='pt-6 border-t border-warm-200 dark:border-charcoal-800/80 flex flex-wrap items-center justify-between gap-4'>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className='pt-6 border-t border-warm-200 dark:border-charcoal-800/80 flex flex-wrap items-center justify-between gap-4'
+            >
               <div className='flex items-center gap-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400'>
-                <span className='w-2 h-2 rounded-full bg-emerald-500'></span>
+                <span className='w-2 h-2 rounded-full bg-emerald-500 animate-pulse'></span>
                 <span>{personalInfo.experienceBadge}</span>
               </div>
 
               <div className='flex items-center gap-3 text-neutral-500 dark:text-neutral-400 text-base'>
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.15, y: -2 }}
                   href={personalInfo.github}
                   target='_blank'
                   rel='noreferrer'
@@ -77,52 +138,64 @@ const HeroSection = ({ onOpenResume }) => {
                   title='GitHub'
                 >
                   <FaGithub />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.15, y: -2 }}
                   href={personalInfo.linkedin}
                   target='_blank'
                   rel='noreferrer'
                   className='p-2 rounded-lg hover:text-blue-600 dark:hover:text-blue-400 hover:bg-warm-100 dark:hover:bg-charcoal-850 transition'
-                  aria-label='LinkedIn Profile'
-                  title='LinkedIn'
+                  aria-label='LinkedIn Profile (dinesh-singh3)'
+                  title='LinkedIn (dinesh-singh3)'
                 >
                   <FaLinkedin />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.15, y: -2 }}
                   href={`mailto:${personalInfo.email}`}
                   className='p-2 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-850 transition'
                   aria-label='Email Dinesh'
                   title='Email'
                 >
                   <FaEnvelope />
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Column: Custom-built Interactive Composition */}
-          <div className='lg:col-span-5'>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
+            className='lg:col-span-5'
+          >
             <InteractiveHeroPreview />
-          </div>
+          </motion.div>
         </div>
 
-        {/* Real Production Metrics Strip */}
+        {/* Real Production Metrics Strip with Staggered Entrance */}
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-warm-200 dark:border-charcoal-800/80 text-left'>
           {personalInfo.stats.map((s, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className='p-4 rounded-xl bg-white dark:bg-charcoal-900/80 border border-warm-200 dark:border-charcoal-800'
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className='p-5 rounded-2xl bg-white/80 dark:bg-charcoal-900/80 border border-warm-200 dark:border-charcoal-800 backdrop-blur-sm shadow-xs hover:shadow-md hover:border-blue-500/30 transition-all duration-300'
             >
-              <div className='text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight font-mono'>
+              <div className='text-2xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight font-mono'>
                 {s.value}
               </div>
-              <div className='text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 mt-0.5'>
+              <div className='text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 mt-1'>
                 {s.label}
               </div>
               <div className='text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5'>
                 {s.sub}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
