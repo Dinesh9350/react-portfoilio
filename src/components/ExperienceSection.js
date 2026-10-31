@@ -96,7 +96,7 @@ const ExperienceSection = () => {
             onClick={() => setActiveTab('timeline')}
             className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'timeline'
-                ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-charcoal-800 text-blue-600 dark:text-blue-400 border border-blue-500/40 shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
@@ -108,7 +108,7 @@ const ExperienceSection = () => {
             onClick={() => setActiveTab('simulator')}
             className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'simulator'
-                ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-charcoal-800 text-purple-600 dark:text-purple-400 border border-purple-500/40 shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
@@ -120,7 +120,7 @@ const ExperienceSection = () => {
             onClick={() => setActiveTab('architecture')}
             className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'architecture'
-                ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-charcoal-800 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40 shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >

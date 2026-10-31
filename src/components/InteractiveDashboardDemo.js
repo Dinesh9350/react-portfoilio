@@ -82,6 +82,7 @@ const InteractiveDashboardDemo = () => {
   const [approvalModal, setApprovalModal] = useState(null);
   const [approvalSuccess, setApprovalSuccess] = useState(false);
   const [inspectorMode, setInspectorMode] = useState('table'); // 'table' | 'state'
+  const [mobileShowAll, setMobileShowAll] = useState(false);
 
   const filteredData = useMemo(() => {
     return transactions.filter((t) => {
@@ -300,24 +301,24 @@ const InteractiveDashboardDemo = () => {
             </table>
           </div>
 
-          {/* Mobile Adaptive Cards View (< md) */}
+          {/* Mobile Adaptive Cards View (< md) - Clean & Compact */}
           <div className='md:hidden divide-y divide-warm-200 dark:divide-charcoal-800'>
-            {filteredData.map((txn) => (
+            {(mobileShowAll ? filteredData : filteredData.slice(0, 3)).map((txn) => (
               <div
                 key={txn.id}
-                className='p-4 space-y-2.5 bg-white dark:bg-charcoal-900 hover:bg-warm-50 dark:hover:bg-charcoal-850/50 transition'
+                className='p-3.5 space-y-2 bg-white dark:bg-charcoal-900 hover:bg-warm-50 dark:hover:bg-charcoal-850/50 transition'
               >
                 <div className='flex items-center justify-between'>
-                  <div>
+                  <div className='flex items-center gap-2'>
                     <span className='font-mono font-bold text-xs text-neutral-900 dark:text-white'>
                       {txn.id}
                     </span>
-                    <span className='block text-[10px] text-neutral-400 font-mono'>
+                    <span className='text-[10px] text-neutral-400 font-mono'>
                       {txn.date}
                     </span>
                   </div>
                   <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                       txn.portal === 'PayIn'
                         ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
                         : 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800'
@@ -332,32 +333,29 @@ const InteractiveDashboardDemo = () => {
                     <span className='font-semibold text-neutral-800 dark:text-neutral-200 block'>
                       {txn.merchant}
                     </span>
-                    <span className='text-[10px] text-neutral-400 font-mono'>
-                      {txn.reference}
-                    </span>
                   </div>
                   <span className='font-mono font-extrabold text-sm text-neutral-900 dark:text-white'>
                     {txn.amount}
                   </span>
                 </div>
 
-                <div className='flex items-center justify-between pt-2 border-t border-warm-100 dark:border-charcoal-800/60'>
+                <div className='flex items-center justify-between pt-1.5 border-t border-warm-100 dark:border-charcoal-800/60'>
                   <div>
                     {txn.status === 'Completed' && (
-                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'>
-                        <FaCheckCircle className='text-[10px]' />
+                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'>
+                        <FaCheckCircle className='text-[9px]' />
                         <span>Settled</span>
                       </span>
                     )}
                     {txn.status === 'Processing' && (
-                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800'>
-                        <FaClock className='text-[10px] animate-spin' />
+                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800'>
+                        <FaClock className='text-[9px] animate-spin' />
                         <span>In Clearing</span>
                       </span>
                     )}
                     {txn.status === 'Pending' && (
-                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800'>
-                        <FaShieldAlt className='text-[10px]' />
+                      <span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800'>
+                        <FaShieldAlt className='text-[9px]' />
                         <span>Pending Checker</span>
                       </span>
                     )}
@@ -366,18 +364,30 @@ const InteractiveDashboardDemo = () => {
                   {txn.needsApproval ? (
                     <button
                       onClick={() => setApprovalModal(txn)}
-                      className='px-3 py-1 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-xs transition'
+                      className='px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-xs transition'
                     >
                       Authorize
                     </button>
                   ) : (
-                    <span className='text-emerald-600 dark:text-emerald-400 text-xs font-mono'>
+                    <span className='text-emerald-600 dark:text-emerald-400 text-[11px] font-mono'>
                       Reconciled ✓
                     </span>
                   )}
                 </div>
               </div>
             ))}
+
+            {filteredData.length > 3 && (
+              <div className='p-2.5 text-center bg-warm-50 dark:bg-charcoal-900/90 border-t border-warm-200 dark:border-charcoal-800'>
+                <button
+                  onClick={() => setMobileShowAll(!mobileShowAll)}
+                  className='text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1.5'
+                >
+                  <span>{mobileShowAll ? 'Collapse to top 3 transactions' : `View all ${filteredData.length} transactions`}</span>
+                  <span>{mobileShowAll ? '↑' : '↓'}</span>
+                </button>
+              </div>
+            )}
           </div>
         </>
       ) : (
