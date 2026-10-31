@@ -7,99 +7,11 @@ import {
   FaBolt,
   FaLayerGroup,
   FaCodeBranch,
-  FaTerminal,
   FaChevronDown,
   FaChevronUp,
-  FaPlay,
-  FaServer,
   FaMicrochip,
   FaCheckCircle,
 } from 'react-icons/fa';
-
-const engineeringDecisions = [
-  {
-    id: 'money-movement',
-    title: 'Pessimistic Locking vs. Optimistic UI in Payouts',
-    domain: 'Fintech Money Movement',
-    badge: 'Critical Security',
-    badgeColor: 'border-rose-500/40 bg-rose-500/15 text-rose-600 dark:text-rose-400',
-    summary:
-      'In consumer apps, optimistic UI feels instant. In high-stakes B2B disbursements, an optimistic false-positive on a $50,000 payout destroys merchant trust. I designed deterministic state machines with idempotent request tokens.',
-    telemetry: {
-      action: 'PAYOUT_INITIATE_DISPATCH',
-      idempotencyKey: 'idem_9f48a12e8b',
-      payloadAudit: 'HMAC-SHA256 Validated',
-      retryPolicy: 'Linear backoff (3 attempts, 1.2s timeout)',
-      recoveryGuarantee: 'Zero duplicate disbursements guaranteed',
-    },
-    codeSnippet: `// Idempotent disbursement dispatch with strict lock
-const dispatchPayoutIntent = async (payout) => {
-  setLockState({ locked: true, reason: 'Awaiting Maker signature' });
-  const idempotencyKey = crypto.randomUUID();
-  
-  const response = await api.post('/v1/payouts/authorize', {
-    amount: payout.amount,
-    beneficiaryId: payout.recipient,
-  }, { headers: { 'X-Idempotency-Key': idempotencyKey } });
-
-  return response.data; // Checker approval required
-};`,
-  },
-  {
-    id: 'state-density',
-    title: 'Memoized Slices vs. Virtualized Table Dom',
-    domain: 'PayIn Settlement Dashboard',
-    badge: 'Performance SLA',
-    badgeColor: 'border-blue-500/40 bg-blue-500/15 text-blue-600 dark:text-blue-400',
-    summary:
-      'Filtering 5,000+ daily merchant ledger entries across 12 criteria often triggers cascading DOM repaints. I engineered memoized Redux Toolkit selectors paired with URL SearchParams synchronization.',
-    telemetry: {
-      action: 'SETTLEMENT_FILTER_APPLIED',
-      reRenderLatency: '1.4ms (Memoized Selector Hit)',
-      urlSync: '?rail=UPI&status=Settled&range=today',
-      domReflows: '0 layout thrashing cycles',
-      recoveryGuarantee: '100% shareable deep-linked dashboard states',
-    },
-    codeSnippet: `// URL-synced memoized selector preventing table re-renders
-export const selectFilteredLedger = createSelector(
-  [(state) => state.settlements.items, (_, filterParams) => filterParams],
-  (items, { rail, status, query }) => {
-    return items.filter(txn => 
-      (!rail || txn.rail === rail) &&
-      (!status || txn.status === status) &&
-      (!query || txn.id.includes(query))
-    );
-  }
-);`,
-  },
-  {
-    id: 'form-resilience',
-    title: 'Encrypted Storage Hydration vs. Volatile Form State',
-    domain: '6-Step Signzy KYC Engine',
-    badge: 'Zero Data Loss',
-    badgeColor: 'border-emerald-500/40 bg-emerald-500/15 text-emerald-600 dark:text-emerald-400',
-    summary:
-      'Merchants abandoning mid-way through document uploads lose patience when forms reset on reload. I created a schema-validated draft hydration layer syncing seamlessly with Signzy verification APIs.',
-    telemetry: {
-      action: 'KYC_DRAFT_HYDRATED',
-      storageBackend: 'Encrypted LocalStorage Slices',
-      apiIntegration: 'Signzy PAN & Penny-Drop Verification',
-      turnaroundImpact: '75% reduction in manual verification cycle',
-      recoveryGuarantee: 'Zero loss across browser refreshes & network drops',
-    },
-    codeSnippet: `// Auto-hydrating KYC form machine with Signzy verification
-export const useKycDraftMachine = (merchantId) => {
-  const [draft, setDraft] = usePersistedState(\`kyc_\${merchantId}\`);
-
-  const verifyStep = async (stepData) => {
-    const verified = await signzyApi.verifyPanOrGst(stepData);
-    setDraft(prev => ({ ...prev, ...verified, step: prev.step + 1 }));
-  };
-
-  return { draft, verifyStep };
-};`,
-  },
-];
 
 const narrativeMeta = [
   {
@@ -150,33 +62,7 @@ const principleMeta = [
 ];
 
 const AboutSection = () => {
-  const [activeDecisionId, setActiveDecisionId] = useState('money-movement');
   const [expandedPrinciple, setExpandedPrinciple] = useState(0);
-  const [isSimulating, setIsSimulating] = useState(false);
-  const [simulatedLog, setSimulatedLog] = useState(null);
-
-  const activeDecision =
-    engineeringDecisions.find((d) => d.id === activeDecisionId) ||
-    engineeringDecisions[0];
-
-  const handleSimulate = (decision) => {
-    setIsSimulating(true);
-    setSimulatedLog('Initializing handshake & verifying HMAC signature...');
-    setTimeout(() => {
-      setSimulatedLog(
-        `✓ Idempotency Key verified: ${decision.telemetry.idempotencyKey || 'idem_7721'}`
-      );
-    }, 400);
-    setTimeout(() => {
-      setSimulatedLog(
-        `✓ Action confirmed: ${decision.telemetry.action} (Latency: ${decision.telemetry.reRenderLatency || '0.8ms'})`
-      );
-    }, 850);
-    setTimeout(() => {
-      setSimulatedLog(`★ Execution Resolved: ${decision.telemetry.recoveryGuarantee}`);
-      setIsSimulating(false);
-    }, 1300);
-  };
 
   return (
     <section
@@ -203,7 +89,7 @@ const AboutSection = () => {
               <span className='relative inline-flex rounded-full h-2 w-2 bg-blue-500'></span>
             </span>
             <FaCompass className='text-xs' />
-            <span>Engineering Philosophy & Architecture</span>
+            <span>Engineering Philosophy</span>
           </div>
           <h2 className='text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
             About {personalInfo.name}
@@ -297,7 +183,7 @@ const AboutSection = () => {
         </div>
 
         {/* Narrative & Principles Layout */}
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left mb-14'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left'>
           {/* Narrative Column with Left Accent Borders and Vibrant Chips */}
           <div className='lg:col-span-7 space-y-4'>
             {aboutData.narrative.map((paragraph, idx) => {
@@ -417,133 +303,6 @@ const AboutSection = () => {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Detailing Engine: Interactive Production Decisions & Under-the-Hood Inspector (Vivid & Modern) */}
-        <div className='rounded-2xl border border-warm-300 dark:border-charcoal-700 bg-white dark:bg-charcoal-900 overflow-hidden shadow-xl text-left'>
-          {/* Luminous Top Accent Strip */}
-          <div className='h-1 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500' />
-
-          <div className='p-5 sm:p-7'>
-            {/* Header */}
-            <div className='flex flex-wrap items-center justify-between gap-3 pb-5 mb-5 border-b border-warm-200 dark:border-charcoal-800'>
-              <div>
-                <span className='text-[11px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 font-mono flex items-center gap-1.5'>
-                  <FaServer className='text-xs' />
-                  <span>Under The Hood · Architectural Decisions</span>
-                </span>
-                <h3 className='text-lg sm:text-xl font-extrabold text-neutral-900 dark:text-white mt-1'>
-                  How I Solve Critical Frontend Engineering Challenges
-                </h3>
-              </div>
-
-              {/* Decision Selectors */}
-              <div className='flex items-center gap-1 p-1 rounded-xl bg-warm-100 dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700 text-xs font-semibold overflow-x-auto max-w-full'>
-                {engineeringDecisions.map((dec, i) => (
-                  <button
-                    key={dec.id}
-                    onClick={() => {
-                      setActiveDecisionId(dec.id);
-                      setSimulatedLog(null);
-                    }}
-                    className={`px-3 py-1.5 rounded-lg transition whitespace-nowrap text-xs font-bold ${
-                      activeDecisionId === dec.id
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs'
-                        : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
-                    }`}
-                  >
-                    Scenario {i + 1}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Active Decision Breakdown */}
-            <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 items-start'>
-              {/* Left: Summary & Live Simulation Trigger */}
-              <div className='lg:col-span-6 space-y-4'>
-                <div className='flex items-center gap-2'>
-                  <span
-                    className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${activeDecision.badgeColor}`}
-                  >
-                    {activeDecision.badge}
-                  </span>
-                  <span className='text-xs font-mono text-neutral-500 dark:text-neutral-400'>
-                    {activeDecision.domain}
-                  </span>
-                </div>
-
-                <h4 className='text-base sm:text-lg font-bold text-neutral-900 dark:text-white'>
-                  {activeDecision.title}
-                </h4>
-
-                <p className='text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed'>
-                  {activeDecision.summary}
-                </p>
-
-                {/* Telemetry Matrix with Colored Callouts */}
-                <div className='p-4 rounded-xl bg-gradient-to-br from-warm-50 to-warm-100/60 dark:from-charcoal-850 dark:to-charcoal-900 border border-warm-200 dark:border-charcoal-750 text-xs space-y-2.5'>
-                  <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 block'>
-                    System Telemetry & Guarantees
-                  </span>
-                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[11px] font-mono'>
-                    <div className='p-2 rounded-lg bg-white/70 dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
-                      <span className='text-neutral-400 block text-[10px]'>Action Type:</span>
-                      <span className='text-blue-600 dark:text-blue-400 font-bold'>
-                        {activeDecision.telemetry.action}
-                      </span>
-                    </div>
-                    <div className='p-2 rounded-lg bg-white/70 dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
-                      <span className='text-neutral-400 block text-[10px]'>Recovery Guarantee:</span>
-                      <span className='text-emerald-600 dark:text-emerald-400 font-bold'>
-                        {activeDecision.telemetry.recoveryGuarantee}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Simulation Trigger Button */}
-                <div className='pt-2 flex flex-wrap items-center gap-3'>
-                  <button
-                    onClick={() => handleSimulate(activeDecision)}
-                    disabled={isSimulating}
-                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-sm ${
-                      isSimulating
-                        ? 'bg-neutral-300 dark:bg-charcoal-700 text-neutral-500 cursor-not-allowed'
-                        : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-blue-500/20'
-                    }`}
-                  >
-                    <FaPlay className={`text-[10px] ${isSimulating ? 'animate-spin' : ''}`} />
-                    <span>{isSimulating ? 'Simulating Engine...' : 'Simulate Telemetry Execution'}</span>
-                  </button>
-
-                  {simulatedLog && (
-                    <span className='text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 animate-pulse'>
-                      {simulatedLog}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Right: Concrete Implementation Pattern Code Box */}
-              <div className='lg:col-span-6'>
-                <div className='rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 overflow-hidden text-xs font-mono shadow-md'>
-                  <div className='px-4 py-2.5 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between text-[11px] text-neutral-400'>
-                    <span className='flex items-center gap-2'>
-                      <FaTerminal className='text-cyan-400' />
-                      <span className='text-white font-medium'>production_pattern.ts</span>
-                    </span>
-                    <span className='text-emerald-400 font-mono text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30'>
-                      Verified Pattern ✓
-                    </span>
-                  </div>
-                  <pre className='p-4 overflow-x-auto text-[11px] leading-relaxed text-blue-300'>
-                    <code>{activeDecision.codeSnippet}</code>
-                  </pre>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
