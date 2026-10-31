@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 import InteractiveHeroPreview from './InteractiveHeroPreview';
-import { FaArrowRight, FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaArrowRight, FaDownload, FaFileAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenResume }) => {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -95,15 +95,26 @@ const HeroSection = () => {
                 <FaArrowRight className='text-xs group-hover:translate-x-1 transition-transform' />
               </motion.button>
 
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={onOpenResume}
+                className='w-full sm:w-auto px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center justify-center gap-2 shadow-xs hover:border-blue-500/50 dark:hover:border-blue-500/50'
+              >
+                <FaFileAlt className='text-xs text-blue-600 dark:text-blue-400' />
+                <span>View Resume</span>
+              </motion.button>
+
               <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 href={personalInfo.resumeUrl}
                 download='Dinesh-Singh-Resume.pdf'
-                className='w-full sm:w-auto px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center justify-center gap-2 shadow-xs hover:border-neutral-400 dark:hover:border-charcoal-600'
+                className='w-full sm:w-auto px-4 py-3 rounded-xl text-sm font-semibold bg-warm-100 dark:bg-charcoal-900 hover:bg-warm-200 dark:hover:bg-charcoal-800 text-neutral-700 dark:text-neutral-300 border border-warm-200 dark:border-charcoal-800 transition flex items-center justify-center gap-2 shadow-xs'
+                title='Direct PDF Download'
               >
-                <FaDownload className='text-xs text-blue-600 dark:text-blue-400' />
-                <span>Download Resume</span>
+                <FaDownload className='text-xs text-neutral-500 dark:text-neutral-400' />
+                <span>PDF</span>
               </motion.a>
 
               <motion.button

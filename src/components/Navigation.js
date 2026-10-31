@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 import { personalInfo } from '../data/portfolioData';
-import { FaDownload, FaBars, FaTimes, FaLinkedin } from 'react-icons/fa';
+import { FaDownload, FaFileAlt, FaBars, FaTimes, FaLinkedin } from 'react-icons/fa';
 
 const Navigation = ({ onOpenResume }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -108,17 +108,16 @@ const Navigation = ({ onOpenResume }) => {
 
           <ThemeToggle />
 
-          <motion.a
+          <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            href={personalInfo.resumeUrl}
-            download='Dinesh-Singh-Resume.pdf'
+            onClick={onOpenResume}
             className='hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition shadow-xs'
-            title='Download Dinesh Singh Resume (PDF)'
+            title='View Dinesh Singh Resume'
           >
-            <FaDownload className='text-[10px]' />
+            <FaFileAlt className='text-[10px]' />
             <span>Resume</span>
-          </motion.a>
+          </motion.button>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -166,13 +165,23 @@ const Navigation = ({ onOpenResume }) => {
                   <FaLinkedin className='text-sm text-blue-600 dark:text-blue-400' />
                   <span>LinkedIn (dinesh-singh3)</span>
                 </a>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenResume) onOpenResume();
+                  }}
+                  className='w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition shadow-xs'
+                >
+                  <FaFileAlt className='text-xs' />
+                  <span>View Resume</span>
+                </button>
                 <a
                   href={personalInfo.resumeUrl}
                   download='Dinesh-Singh-Resume.pdf'
-                  className='w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition'
+                  className='w-full flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-semibold border border-warm-300 dark:border-charcoal-700 text-neutral-800 dark:text-neutral-200 hover:bg-warm-100 dark:hover:bg-charcoal-850 transition'
                 >
-                  <FaDownload className='text-xs' />
-                  <span>Download Resume (PDF)</span>
+                  <FaDownload className='text-xs text-neutral-500' />
+                  <span>Download PDF</span>
                 </a>
               </div>
             </div>
