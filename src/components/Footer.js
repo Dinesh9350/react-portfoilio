@@ -1,62 +1,57 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  FaHome,
-  FaLinkedin,
-  FaMailBulk,
-  FaPhone,
-  FaTwitter,
-  FaWhatsapp,
-} from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaArrowUp } from 'react-icons/fa';
+import { profileData } from './data';
 
 const Footer = () => {
-  return (
-    <div className='bg-black text-white sm:flex justify-center items-center pt-5 '>
-      <ul className=''>
-        <li className='flex justify-center  sm:justify-start m-4 items-center '>
-          <FaHome />
-          <p className='mx-3'>Nangloi, Delhi</p>
-        </li>
-        <li className='flex m-4  justify-center  sm:justify-start items-center '>
-          <FaPhone />
-          <p className='mx-3'>+91 9315446968</p>
-        </li>
-        <li className='flex justify-center sm:justify-start m-4 items-center '>
-          <FaMailBulk />
-          <p className='mx-3'>dineshsingh9350@gmail.com</p>
-        </li>
-      </ul>
-      <ul className='p-5 '>
-        <li className='py-2'>
-          <h3 className='font-bold sm:text-start  py-1'>About me</h3>
-          <p className=' py-1'>
-            I am Dinesh, a frontend developer having experience of creating
-            several projects using React.js, html, css.
-          </p>
-          <div className='flex justify-center items-center text-2xl sm:justify-start py-2'>
-            <span className='mx-2'>
-              <Link
-                to='https://www.linkedin.com/in/dinesh-singh3/'
-                target='blank'
-              >
-                <FaLinkedin />
-              </Link>
-            </span>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-            <span className='mx-2'>
-              <Link to='https://twitter.com/Dinesh62486433' target='blank'>
-                <FaTwitter />
-              </Link>
-            </span>
-            <span className='mx-2'>
-              <Link to='https://wa.me/919315446968?text=' target='blank'>
-                <FaWhatsapp />
-              </Link>
-            </span>
-          </div>
-        </li>
-      </ul>
-    </div>
+  return (
+    <footer className='border-t border-warm-200 dark:border-charcoal-800 bg-white dark:bg-charcoal-950 py-8 text-neutral-600 dark:text-neutral-400 text-xs'>
+      <div className='max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4'>
+        {/* Identity & Copyright */}
+        <div className='flex items-center gap-2'>
+          <span className='font-bold text-neutral-900 dark:text-white'>
+            {profileData.name}
+          </span>
+          <span>·</span>
+          <span>Frontend Developer (2+ Years Experience)</span>
+          <span>·</span>
+          <span>© {new Date().getFullYear()}</span>
+        </div>
+
+        {/* Links & Return to Top */}
+        <div className='flex items-center gap-4'>
+          <a
+            href={profileData.github}
+            target='_blank'
+            rel='noreferrer'
+            className='hover:text-neutral-900 dark:hover:text-white transition'
+            aria-label='GitHub'
+          >
+            <FaGithub className='text-sm' />
+          </a>
+          <a
+            href={profileData.linkedin}
+            target='_blank'
+            rel='noreferrer'
+            className='hover:text-blue-600 dark:hover:text-blue-400 transition'
+            aria-label='LinkedIn'
+          >
+            <FaLinkedin className='text-sm' />
+          </a>
+          <button
+            onClick={scrollToTop}
+            className='p-1.5 rounded-lg border border-warm-200 dark:border-charcoal-800 hover:bg-warm-100 dark:hover:bg-charcoal-850 hover:text-neutral-900 dark:hover:text-white transition ml-2'
+            aria-label='Return to top'
+            title='Return to top'
+          >
+            <FaArrowUp className='text-xs' />
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 };
 

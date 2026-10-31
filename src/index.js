@@ -7,11 +7,10 @@ import App from './App';
 import ErrorPage from './components/ErrorPage';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/Home';
+import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Skills from './components/Skills';
-
-// const Home = lazy(() => import('./components/Home'));
 
 const router = createBrowserRouter([
   {
@@ -21,11 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          // <Suspense>
-          <Home />
-          // </Suspense>
-        ),
+        element: <Home />,
+      },
+      {
+        path: '/experience',
+        element: <Experience />,
       },
       {
         path: '/projects',
@@ -46,7 +45,4 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RouterProvider router={router} />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

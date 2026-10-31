@@ -1,23 +1,24 @@
 import React from 'react';
 
-const SkillsCard = ({ title, img }) => {
+const SkillsCard = ({ title, img, icon, note }) => {
   return (
-    <div
-      data-aos='zoom-in'
-      data-aos-duration='1000'
-      data-aos-once='true'
-      data-aos-delay='300'
-      className='w-36 text-black bg-white rounded-lg m-2 p-5 hover:scale-95 transform duration-500 lg:w-60 md: sm:m-4'
-    >
-      <img loading='lazy' className='rounded-lg' src={img} alt='html' />
-      <div className='py-3 px-3 hidden md:block'>
-        <h1
-          data-aos='slide-left'
-          data-aos-offset='50'
-          className='text-xl sm:text-3xl font-bold '
-        >
+    <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-800 flex items-start gap-3 transition hover:border-neutral-400 dark:hover:border-charcoal-700 text-left'>
+      <div className='text-2xl mt-0.5 flex-shrink-0'>
+        {icon ? (
+          icon
+        ) : img ? (
+          <img src={img} alt={title} className='w-6 h-6 object-contain' />
+        ) : null}
+      </div>
+      <div>
+        <div className='text-sm font-bold text-neutral-900 dark:text-white'>
           {title}
-        </h1>
+        </div>
+        {note && (
+          <div className='text-xs text-neutral-600 dark:text-neutral-400 mt-0.5'>
+            {note}
+          </div>
+        )}
       </div>
     </div>
   );
