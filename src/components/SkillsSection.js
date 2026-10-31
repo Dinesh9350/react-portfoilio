@@ -263,12 +263,6 @@ const SkillsSection = () => {
     return matchesDiscipline && matchesSearch;
   });
 
-  // On mobile, if 'All' is chosen and user hasn't expanded, show top 6 core skills to keep view clean
-  const visibleSkills =
-    selectedDiscipline === 'All' && !searchQuery && !mobileShowAll
-      ? filteredSkills.slice(0, 6)
-      : filteredSkills;
-
   return (
     <section
       id='skills'
@@ -333,19 +327,26 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        {/* Skills Interactive Grid (Responsive on Mobile & Vivid Badges) */}
+        {/* Skills Interactive Grid (Responsive on Mobile & All Visible on Desktop) */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-6 text-left'>
-          {visibleSkills.map((s, idx) => {
+          {filteredSkills.map((s, idx) => {
             const isSelected = activeSkill && activeSkill.name === s.name;
             const hasContext = !!skillProductionContext[s.name];
             const colors = getSkillColorTokens(s.name, s.discipline);
+            const isHiddenOnMobile =
+              !mobileShowAll &&
+              selectedDiscipline === 'All' &&
+              !searchQuery &&
+              idx >= 6;
 
             return (
               <motion.div
                 key={idx}
                 whileHover={{ y: -2 }}
                 onClick={() => setActiveSkill(isSelected ? null : s)}
-                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 shadow-xs ${
+                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex-col justify-between gap-3 shadow-xs ${
+                  isHiddenOnMobile ? 'hidden sm:flex' : 'flex'
+                } ${
                   isSelected
                     ? 'bg-blue-50/90 dark:bg-charcoal-850 border-blue-500 shadow-md ring-2 ring-blue-500/40'
                     : `${colors.cardBg} ${colors.borderHover} hover:shadow-md`
