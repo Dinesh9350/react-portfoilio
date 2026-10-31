@@ -13,39 +13,14 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaArrowRight,
-  FaProjectDiagram,
-  FaBolt,
+  FaLightbulb,
+  FaRocket,
 } from 'react-icons/fa';
-
-const visualPipelines = {
-  'Core Frontend': [
-    { step: '01', title: 'Route Intent', desc: 'URL navigation or form trigger', badge: 'Client' },
-    { step: '02', title: 'Server Streaming', desc: 'Zero-bundle server component pre-render', badge: 'Edge / RSC' },
-    { step: '03', title: 'Strict Type Contract', desc: 'TypeScript discriminated union check', badge: 'Compiler' },
-    { step: '04', title: '60fps Hydration', desc: 'Instant paint with zero cumulative layout shift', badge: 'Active DOM' },
-  ],
-  'State and Data': [
-    { step: '01', title: 'User Action', desc: 'Dispatch with unique idempotency key', badge: 'Dispatcher' },
-    { step: '02', title: 'Async Middleware', desc: 'Axios interceptor & JWT token refresh', badge: 'Pipeline' },
-    { step: '03', title: 'Normalized Slices', desc: 'createEntityAdapter state hydration', badge: 'Redux Store' },
-    { step: '04', title: 'Reselect Memoization', desc: 'Zero redundant component re-renders', badge: 'Subscribed UI' },
-  ],
-  'UI Engineering': [
-    { step: '01', title: 'Figma Auto-Layout', desc: '80+ screen component token hierarchy', badge: 'Design System' },
-    { step: '02', title: 'Tailwind Tokens', desc: 'Dark-mode charcoal theme variable map', badge: 'CSS Engine' },
-    { step: '03', title: 'Responsive Pinning', desc: 'Sticky column horizontal table scroll', badge: 'Mobile / 4K' },
-    { step: '04', title: 'Zero Layout Shift', desc: 'Pre-reserved skeleton dimensions', badge: 'Visual Fidelity' },
-  ],
-  'Performance and Architecture': [
-    { step: '01', title: 'Initial Request', desc: 'HTTP/2 multiplexed preconnect', badge: 'Edge Network' },
-    { step: '02', title: 'Server Components', desc: 'Heavy modules kept strictly server-side', badge: 'Zero Bundle' },
-    { step: '03', title: 'Dynamic Chunking', desc: 'React.lazy deferred modal loading', badge: 'Webpack 5' },
-    { step: '04', title: 'Lighthouse SLA', desc: 'LCP < 1.4s · CLS 0.00 · FID < 50ms', badge: 'Core Web Vitals' },
-  ],
-};
 
 const skillProductionContext = {
   'Next.js (App Router)': {
+    concept:
+      'Server-first hybrid architecture leveraging React Server Components (RSC) to stream HTML directly from the edge, keeping heavy modules off the client bundle.',
     shippedAt: 'SecurePay (Current)',
     scope: '60+ Screens across PayIn, PayOut, and Corporate Website',
     challengeSolved:
@@ -67,6 +42,8 @@ export default async function SettlementPage({ searchParams }) {
 }`,
   },
   'Next.js (Pages Router)': {
+    concept:
+      'Page-based server-side rendering (SSR) and static site generation (SSG) with Stale-While-Revalidate caching for instant document delivery.',
     shippedAt: 'BucleLabs & SecurePay Legacy Portals',
     scope: 'SSR and SSG page generation for documentation and merchant reports',
     challengeSolved:
@@ -86,6 +63,8 @@ export async function getServerSideProps(context) {
 }`,
   },
   'React.js': {
+    concept:
+      'Declarative component-driven UI with Concurrent Mode scheduling, fiber tree reconciliation, and memoized selector subscriptions.',
     shippedAt: 'SecurePay & BucleLabs',
     scope: 'Core frontend engine across all 4 SecurePay systems & client applications',
     challengeSolved:
@@ -104,6 +83,8 @@ export const CheckoutContainer = ({ intentId }) => {
 };`,
   },
   'JavaScript (ES6+)': {
+    concept:
+      'Event-driven single-threaded execution model utilizing asynchronous event loops, microtask queues, and immutable functional transformations.',
     shippedAt: 'SecurePay & BucleLabs',
     scope: 'Asynchronous state machines, event loops, financial math, and Luhn checksum',
     challengeSolved:
@@ -127,6 +108,8 @@ export const validateLuhn = (numStr) => {
 };`,
   },
   'TypeScript': {
+    concept:
+      'Static type system enforcing strict compile-time invariants, discriminated union state machines, and elimination of undefined runtime exceptions.',
     shippedAt: 'SecurePay Transaction Gateway',
     scope: 'Strict end-to-end type contracts across payment gateway and API payloads',
     challengeSolved:
@@ -144,6 +127,8 @@ type PaymentPayload =
   | { method: 'NETBANKING'; bankCode: string };`,
   },
   'HTML5 & CSS3': {
+    concept:
+      'Accessible document object model with semantic ARIA landmark roles, responsive CSS grid/flexbox, and hardware-accelerated rendering layers.',
     shippedAt: 'SecurePay Corporate Web & BucleLabs',
     scope: 'Semantic document hierarchy, accessible ARIA landmarks, and microdata',
     challengeSolved:
@@ -164,6 +149,8 @@ type PaymentPayload =
 </form>`,
   },
   'Redux Toolkit': {
+    concept:
+      'Normalized unidirectional global state container utilizing Immer for immutable slice updates and Reselect for memoized selector evaluations.',
     shippedAt: 'SecurePay PayIn & PayOut Portals',
     scope: 'Centralized state management across settlement tables, balance cards, and filters',
     challengeSolved:
@@ -185,6 +172,8 @@ export const settlementSlice = createSlice({
 });`,
   },
   'Redux': {
+    concept:
+      'Predictable centralized store with strict action dispatch pipelines and custom middleware for idempotent telemetry interception.',
     shippedAt: 'SecurePay Core Portals',
     scope: 'Unidirectional financial transaction dispatch pipelines',
     challengeSolved:
@@ -205,6 +194,8 @@ const idempotencyMiddleware = (store) => (next) => (action) => {
 };`,
   },
   'React Context API': {
+    concept:
+      'React tree state injection mechanism designed for ambient concerns (themes, user auth sessions) without cascading prop drilling.',
     shippedAt: 'SecurePay Global Web App',
     scope: 'Theme toggling, user authentication sessions, and modal orchestrations',
     challengeSolved:
@@ -227,6 +218,8 @@ export const ThemeProvider = ({ children }) => {
 };`,
   },
   'React Query': {
+    concept:
+      'Asynchronous server-state synchronization engine managing declarative cache keys, background refetches, and optimistic mutation rollbacks.',
     shippedAt: 'SecurePay Analytics & Merchant Feeds',
     scope: 'Asynchronous server-state caching, background polling, and mutation invalidation',
     challengeSolved:
@@ -247,6 +240,8 @@ export const useLiveSettlements = (batchId) => {
 };`,
   },
   'REST APIs & Axios': {
+    concept:
+      'Stateless HTTP client architecture configured with request/response interceptors for automatic JWT rotation and exponential backoff.',
     shippedAt: 'SecurePay & BucleLabs',
     scope: 'Secure client-server communication across all frontend microservices',
     challengeSolved:
@@ -270,6 +265,8 @@ api.interceptors.response.use(
 );`,
   },
   'Formik & Yup': {
+    concept:
+      'Schema-driven form state machine binding input validations, touch states, and dynamic conditional schemas without re-renders.',
     shippedAt: 'Merchant Onboarding & KYC Engine',
     scope: '6-step dynamic onboarding wizard with document verification rules',
     challengeSolved:
@@ -291,6 +288,8 @@ const kycSchema = Yup.object().shape({
 });`,
   },
   'Material UI (MUI)': {
+    concept:
+      'Design system component library built with emotion-styled theme tokens, comprehensive keyboard ARIA 1.2, and dense enterprise table layouts.',
     shippedAt: 'SecurePay Merchant Portals',
     scope: 'High-density transaction tables, modals, drawer navigation, and form components',
     challengeSolved:
@@ -313,6 +312,8 @@ export const dataTableTheme = createTheme({
 });`,
   },
   'Tailwind CSS': {
+    concept:
+      'Utility-first CSS compiler that analyzes JSX files to generate a purged, dead-code-free production stylesheet under 15KB gzipped.',
     shippedAt: 'SecurePay Web & Portals',
     scope: 'Rapid responsive UI styling, dark-mode tokens, and custom utility classes',
     challengeSolved:
@@ -329,6 +330,8 @@ export const dataTableTheme = createTheme({
 </div>`,
   },
   'Responsive Web Design': {
+    concept:
+      'Mobile-first layout philosophy using fluid viewports, media queries, and sticky column pinning to maintain parity across 320px to 4K displays.',
     shippedAt: 'SecurePay & BucleLabs',
     scope: 'Multi-device layouts spanning 320px mobile viewports up to 4K desktop screens',
     challengeSolved:
@@ -349,6 +352,8 @@ export const dataTableTheme = createTheme({
 }`,
   },
   'Figma-to-UI Implementation': {
+    concept:
+      'Pixel-perfect translation of design auto-layout gaps, color variables, and typography hierarchies into consistent engineering tokens.',
     shippedAt: 'SecurePay 4 Fintech Systems',
     scope: 'Translating 80+ Figma mockups into pixel-perfect production code',
     challengeSolved:
@@ -371,6 +376,8 @@ module.exports = {
 };`,
   },
   'Reusable Component Architecture': {
+    concept:
+      'Compound component design patterns decoupling business logic from presentation through composable slots and explicit prop contracts.',
     shippedAt: 'SecurePay Merchant Component Library',
     scope: 'Design system consisting of 40+ composable buttons, inputs, modals, and badges',
     challengeSolved:
@@ -394,6 +401,8 @@ export const Modal = ({ isOpen, onClose, children }) => (
 );`,
   },
   'Next.js Server Components': {
+    concept:
+      'Zero-bundle server components executed exclusively on the server, removing data-fetching logic and heavy npm packages from the client.',
     shippedAt: 'SecurePay Merchant Portals',
     scope: 'Zero-bundle financial overview shells and dynamic data hydration',
     challengeSolved:
@@ -411,6 +420,8 @@ export default async function OverviewShell() {
 }`,
   },
   'Next.js Server Actions': {
+    concept:
+      'RPC-style server mutations with progressive enhancement, enabling form actions to succeed even before client-side JavaScript is parsed.',
     shippedAt: 'SecurePay Public Forms & Inquiries',
     scope: 'Direct server mutations without manual REST endpoint boilerplate',
     challengeSolved:
@@ -431,6 +442,8 @@ export async function submitLead(formData) {
 }`,
   },
   'Code Splitting & Lazy Loading': {
+    concept:
+      'Dynamic runtime chunking via React.lazy and dynamic imports, loading non-critical modules strictly on-demand to minimize initial parse time.',
     shippedAt: 'SecurePay Portals',
     scope: 'On-demand loading for heavy dashboard charts, PDF export modules, and modals',
     challengeSolved:
@@ -448,6 +461,8 @@ const ExportStatementModal = dynamic(
 );`,
   },
   'Memoization': {
+    concept:
+      'Referential caching of computation results and function references via useMemo and useCallback to bypass unnecessary React render cycles.',
     shippedAt: 'SecurePay PayIn & PayOut Portals',
     scope: 'Preventing cascading re-renders during high-frequency table filtering',
     challengeSolved:
@@ -464,6 +479,8 @@ const filteredRows = useMemo(() => {
 }, [transactions, selectedRail, minAmount]);`,
   },
   'Performance Optimization': {
+    concept:
+      'Core Web Vitals engineering targeting zero Cumulative Layout Shift (CLS 0.00), sub-1.4s Largest Contentful Paint (LCP), and 60fps frames.',
     shippedAt: 'SecurePay Web & Portals',
     scope: 'Core Web Vitals auditing (LCP, FID, CLS) and render profiling',
     challengeSolved:
@@ -480,6 +497,8 @@ export const TableSkeleton = () => (
 );`,
   },
   'SEO Optimization': {
+    concept:
+      'Search engine discoverability via automated sitemaps, JSON-LD Schema.org structured data, and dynamic OpenGraph social share cards.',
     shippedAt: 'SecurePay Corporate Web',
     scope: 'OpenGraph cards, JSON-LD Schema.org metadata, and automated sitemaps',
     challengeSolved:
@@ -500,6 +519,8 @@ export const metadata = {
 };`,
   },
   'Signzy APIs': {
+    concept:
+      'Third-party compliance microservices integration automating document OCR and penny-drop bank verification with encrypted draft recovery.',
     shippedAt: 'SecurePay Merchant Onboarding Engine',
     scope: 'Automated 6-step KYC verification workflow',
     challengeSolved:
@@ -570,7 +591,6 @@ const SkillsSection = () => {
   const [activeSkill, setActiveSkill] = useState(null);
   const [showAllSkills, setShowAllSkills] = useState(false);
   const [copiedSnippet, setCopiedSnippet] = useState(false);
-  const [detailViewMode, setDetailViewMode] = useState('visual'); // 'visual' | 'code'
 
   const disciplines = ['All', ...skillsData.map((d) => d.discipline)];
 
@@ -639,7 +659,7 @@ const SkillsSection = () => {
             Skills Organized by Engineering Discipline
           </h2>
           <p className='text-xs sm:text-base text-neutral-600 dark:text-neutral-400 max-w-2xl mt-2 leading-relaxed'>
-            Technologies utilized in shipping production applications. Click any skill chip below to inspect telemetry, production challenges solved, and concrete patterns.
+            Technologies utilized in shipping production applications. Click any skill chip below to inspect its core architectural concept, production application, and telemetry.
           </p>
         </motion.div>
 
@@ -736,7 +756,7 @@ const SkillsSection = () => {
                     {s.discipline}
                   </span>
                   <span className='text-blue-600 dark:text-blue-400 font-bold font-mono text-[10px] flex items-center gap-1 hover:underline'>
-                    <span>Deep Dive & Telemetry</span>
+                    <span>Concept & Scope</span>
                     <span>→</span>
                   </span>
                 </div>
@@ -767,24 +787,19 @@ const SkillsSection = () => {
         <AnimatePresence>
           {activeSkill && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.25 }}
-              className='p-4 sm:p-7 rounded-2xl bg-white dark:bg-charcoal-900 border border-blue-400/60 dark:border-blue-500/40 shadow-xl text-left mt-6'
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ duration: 0.2 }}
+              className='p-5 sm:p-6 rounded-2xl bg-white dark:bg-charcoal-900 border border-blue-400/60 dark:border-blue-500/40 shadow-xl text-left mt-6 space-y-4'
             >
               {/* Interactive Inspector Header */}
-              <div className='flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-warm-200 dark:border-charcoal-800'>
-                <div className='flex items-center gap-3'>
-                  <TechBadge name={activeSkill.name} size='md' />
-                  <div>
-                    <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 block'>
-                      {activeSkill.discipline} · Engineering Deep-Dive
-                    </span>
-                    <span className='text-xs text-neutral-500 dark:text-neutral-400'>
-                      {activeSkill.highlight}
-                    </span>
-                  </div>
+              <div className='flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-warm-200 dark:border-charcoal-800'>
+                <div className='flex items-center gap-2.5'>
+                  <TechBadge name={activeSkill.name} size='sm' />
+                  <span className='text-[11px] font-mono text-neutral-500 dark:text-neutral-400 font-semibold'>
+                    {activeSkill.discipline} · {activeSkill.highlight}
+                  </span>
                 </div>
 
                 {/* Quick Prev / Next Navigator & Close */}
@@ -831,196 +846,81 @@ const SkillsSection = () => {
                   skillProductionContext['React.js'];
 
                 return (
-                  <div className='space-y-6'>
-                    {/* 3-Column Architectural Summary */}
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-5 text-xs'>
-                      <div className='p-4 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-800'>
-                        <span className='font-bold uppercase tracking-wider text-neutral-400 font-mono block mb-1.5 text-[10px]'>
-                          Shipped Deployment:
+                  <div className='space-y-4'>
+                    {/* Compact 2-Column: Skill Concept vs Production Application */}
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5'>
+                      {/* Concept Card */}
+                      <div className='p-4 rounded-xl bg-gradient-to-br from-blue-50/70 via-white to-warm-50 dark:from-charcoal-850 dark:via-charcoal-900 dark:to-charcoal-950 border border-blue-200/80 dark:border-blue-900/40'>
+                        <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mb-1.5'>
+                          <FaLightbulb />
+                          <span>Core Engineering Concept</span>
                         </span>
-                        <p className='font-bold text-neutral-900 dark:text-white text-sm'>
-                          {ctx.shippedAt}
-                        </p>
-                        <p className='text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed text-xs'>
-                          {ctx.scope}
+                        <p className='text-xs sm:text-[13px] text-neutral-800 dark:text-neutral-200 leading-relaxed font-sans font-medium'>
+                          {ctx.concept}
                         </p>
                       </div>
 
-                      <div className='p-4 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-800'>
-                        <span className='font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 font-mono block mb-1.5 text-[10px]'>
-                          Technical Problem Solved:
-                        </span>
-                        <p className='text-neutral-700 dark:text-neutral-300 leading-relaxed text-xs'>
-                          {ctx.challengeSolved}
-                        </p>
-                      </div>
-
+                      {/* Production Scope & Solved Problem Card */}
                       <div className='p-4 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-800 flex flex-col justify-between'>
                         <div>
-                          <span className='font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-mono block mb-1.5 text-[10px]'>
-                            Related Production System:
-                          </span>
-                          <p className='font-bold text-neutral-900 dark:text-white text-sm'>
-                            {ctx.relatedDemo}
+                          <div className='flex items-center justify-between mb-1.5'>
+                            <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 flex items-center gap-1.5'>
+                              <FaRocket />
+                              <span>Production Application ({ctx.shippedAt})</span>
+                            </span>
+                          </div>
+                          <p className='text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans'>
+                            {ctx.challengeSolved}
                           </p>
                         </div>
 
-                        <a
-                          href='#projects'
-                          className='mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline'
-                        >
-                          <span>Jump to Live Project Previews</span>
-                          <FaArrowRight className='text-[10px]' />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* View Mode Switcher: Visual Flow vs Code */}
-                    <div className='flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-warm-200 dark:border-charcoal-800'>
-                      <div className='inline-flex p-1 rounded-xl bg-warm-100 dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700 text-xs font-semibold'>
-                        <button
-                          onClick={() => setDetailViewMode('visual')}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
-                            detailViewMode === 'visual'
-                              ? 'bg-white dark:bg-charcoal-900 text-blue-600 dark:text-blue-400 shadow-xs font-bold'
-                              : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-                          }`}
-                        >
-                          <FaProjectDiagram className='text-xs' />
-                          <span>Visual Dataflow & Pipeline</span>
-                        </button>
-                        <button
-                          onClick={() => setDetailViewMode('code')}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
-                            detailViewMode === 'code'
-                              ? 'bg-white dark:bg-charcoal-900 text-blue-600 dark:text-blue-400 shadow-xs font-bold'
-                              : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-                          }`}
-                        >
-                          <FaTerminal className='text-xs' />
-                          <span>Code Implementation</span>
-                        </button>
-                      </div>
-
-                      <span className='text-[10px] font-mono text-neutral-400 dark:text-neutral-500 flex items-center gap-1'>
-                        <FaBolt className='text-amber-500' />
-                        <span>Production Execution Blueprint</span>
-                      </span>
-                    </div>
-
-                    {/* VIEW 1: Visual Dataflow & Telemetry Pipeline */}
-                    {detailViewMode === 'visual' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className='space-y-4 pt-1'
-                      >
-                        {/* 4-Stage Architectural Pipeline */}
-                        <div className='p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-warm-100/80 via-white to-warm-50 dark:from-charcoal-850 dark:via-charcoal-900 dark:to-charcoal-950 border border-warm-200 dark:border-charcoal-750 shadow-2xs'>
-                          <div className='flex items-center justify-between mb-3 text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400'>
-                            <span className='flex items-center gap-1.5'>
-                              <FaProjectDiagram className='text-blue-500' />
-                              <span>{activeSkill.discipline} · Architecture Flow</span>
-                            </span>
-                            <span className='text-[10px] text-emerald-600 dark:text-emerald-400 font-mono'>
-                              Live SLA Verified ✓
-                            </span>
-                          </div>
-
-                          <div className='grid grid-cols-1 sm:grid-cols-4 gap-2.5'>
-                            {(visualPipelines[activeSkill.discipline] || visualPipelines['Core Frontend']).map((pipe, pIdx) => (
-                              <div
-                                key={pIdx}
-                                className='p-3 rounded-xl bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700 relative text-left'
-                              >
-                                <div className='flex items-center justify-between mb-1'>
-                                  <span className='text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400'>
-                                    Stage {pipe.step}
-                                  </span>
-                                  <span className='text-[9px] font-mono px-1.5 py-0.5 rounded bg-warm-100 dark:bg-charcoal-700 text-neutral-600 dark:text-neutral-300'>
-                                    {pipe.badge}
-                                  </span>
-                                </div>
-                                <h4 className='text-xs font-bold text-neutral-900 dark:text-white'>
-                                  {pipe.title}
-                                </h4>
-                                <p className='text-[10px] text-neutral-500 dark:text-neutral-400 mt-1 leading-snug'>
-                                  {pipe.desc}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
+                        <div className='mt-2.5 pt-2 border-t border-warm-200/80 dark:border-charcoal-750 flex items-center justify-between text-[11px] font-mono'>
+                          <span className='text-neutral-500 dark:text-neutral-400 truncate mr-2'>
+                            {ctx.scope}
+                          </span>
+                          <a
+                            href='#projects'
+                            className='text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1 flex-shrink-0'
+                          >
+                            <span>Live Previews</span>
+                            <FaArrowRight className='text-[9px]' />
+                          </a>
                         </div>
+                      </div>
+                    </div>
 
-                        {/* Visual Telemetry Meters */}
-                        <div className='grid grid-cols-1 md:grid-cols-3 gap-3.5'>
-                          {/* Meter 1: Execution Engine */}
-                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
-                            <div className='flex items-center justify-between mb-1.5'>
-                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
-                                Execution Engine
-                              </span>
-                              <span className='text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400'>
-                                99.4% SLA
-                              </span>
-                            </div>
-                            <p className='font-bold text-neutral-900 dark:text-white text-xs mb-2'>
+                    {/* Concise Telemetry Invariants & Code Box */}
+                    <div className='grid grid-cols-1 lg:grid-cols-12 gap-3 pt-1 items-start'>
+                      {/* Telemetry Invariants */}
+                      <div className='lg:col-span-5 p-3.5 rounded-xl bg-warm-50/80 dark:bg-charcoal-850/80 border border-warm-200 dark:border-charcoal-750 text-xs space-y-2'>
+                        <span className='text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 block'>
+                          Runtime Telemetry & Invariants
+                        </span>
+                        <div className='space-y-1.5 text-[11px] font-mono'>
+                          <div className='flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
+                            <span className='text-neutral-400 text-[10px]'>Engine:</span>
+                            <span className='text-neutral-800 dark:text-neutral-200 font-bold truncate ml-2 text-[10px]'>
                               {ctx.telemetry.engine}
-                            </p>
-                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
-                              <div className='bg-blue-500 h-full rounded-full w-[94%]' />
-                            </div>
+                            </span>
                           </div>
-
-                          {/* Meter 2: Bundle Impact */}
-                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
-                            <div className='flex items-center justify-between mb-1.5'>
-                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
-                                Bundle Footprint
-                              </span>
-                              <span className='text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400'>
-                                Optimized
-                              </span>
-                            </div>
-                            <p className='font-bold text-emerald-600 dark:text-emerald-400 text-xs mb-2'>
+                          <div className='flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
+                            <span className='text-neutral-400 text-[10px]'>Bundle Impact:</span>
+                            <span className='text-emerald-600 dark:text-emerald-400 font-bold truncate ml-2 text-[10px]'>
                               {ctx.telemetry.bundleImpact}
-                            </p>
-                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
-                              <div className='bg-emerald-500 h-full rounded-full w-[98%]' />
-                            </div>
+                            </span>
                           </div>
-
-                          {/* Meter 3: Cache / Safety Policy */}
-                          <div className='p-3.5 rounded-xl bg-warm-50 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs'>
-                            <div className='flex items-center justify-between mb-1.5'>
-                              <span className='text-[10px] font-mono uppercase font-bold text-neutral-400'>
-                                Safety & Cache Policy
-                              </span>
-                              <span className='text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400'>
-                                100% Strict
-                              </span>
-                            </div>
-                            <p className='font-bold text-purple-600 dark:text-purple-400 text-xs mb-2 truncate'>
+                          <div className='flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-charcoal-800 border border-warm-200 dark:border-charcoal-700'>
+                            <span className='text-neutral-400 text-[10px]'>Invariant Policy:</span>
+                            <span className='text-blue-600 dark:text-blue-400 font-bold truncate ml-2 text-[10px]'>
                               {ctx.telemetry.cachePolicy}
-                            </p>
-                            <div className='w-full bg-warm-200 dark:bg-charcoal-700 h-1.5 rounded-full overflow-hidden'>
-                              <div className='bg-purple-500 h-full rounded-full w-[100%]' />
-                            </div>
+                            </span>
                           </div>
                         </div>
-                      </motion.div>
-                    )}
+                      </div>
 
-                    {/* VIEW 2: Interactive Code Implementation */}
-                    {detailViewMode === 'code' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className='rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 overflow-hidden text-xs font-mono shadow-sm'
-                      >
-                        <div className='px-3.5 py-2 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between text-[11px] text-neutral-400'>
+                      {/* Code Snippet Window with Copy Button */}
+                      <div className='lg:col-span-7 rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 overflow-hidden text-xs font-mono shadow-sm'>
+                        <div className='px-3.5 py-1.5 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between text-[10px] text-neutral-400'>
                           <span className='flex items-center gap-1.5'>
                             <FaTerminal className='text-blue-400 text-[10px]' />
                             <span>implementation_{activeSkill.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}.ts</span>
@@ -1028,7 +928,7 @@ const SkillsSection = () => {
 
                           <button
                             onClick={() => handleCopyCode(ctx.codeSample)}
-                            className='inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-mono text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 transition'
+                            className='inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 transition'
                             title='Copy code snippet'
                           >
                             {copiedSnippet ? (
@@ -1039,16 +939,16 @@ const SkillsSection = () => {
                             ) : (
                               <>
                                 <FaCopy className='text-neutral-400 text-[10px]' />
-                                <span>Copy Snippet</span>
+                                <span>Copy</span>
                               </>
                             )}
                           </button>
                         </div>
-                        <pre className='p-4 overflow-x-auto text-[11px] leading-relaxed text-blue-300'>
+                        <pre className='p-3.5 overflow-x-auto text-[11px] leading-relaxed text-blue-300'>
                           <code>{ctx.codeSample}</code>
                         </pre>
-                      </motion.div>
-                    )}
+                      </div>
+                    </div>
                   </div>
                 );
               })()}
