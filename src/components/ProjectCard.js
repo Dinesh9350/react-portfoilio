@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaExternalLinkAlt, FaGithub, FaLock, FaBookOpen } from 'react-icons/fa';
+import TechBadge from './TechBadge';
 
 const ProjectCard = ({ project, onSelectCaseStudy }) => {
   const {
@@ -65,12 +66,7 @@ const ProjectCard = ({ project, onSelectCaseStudy }) => {
           {/* Technology Badges */}
           <div className='flex flex-wrap gap-1.5 mb-6'>
             {tech.map((t, idx) => (
-              <span
-                key={idx}
-                className='px-2.5 py-0.5 rounded text-[11px] font-medium bg-warm-100 dark:bg-charcoal-850 text-neutral-700 dark:text-neutral-300 border border-warm-200 dark:border-charcoal-750'
-              >
-                {t}
-              </span>
+              <TechBadge key={idx} name={t} size='xs' />
             ))}
           </div>
         </div>

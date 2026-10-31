@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { experienceData, educationData } from '../data/portfolioData';
 import InteractiveMakerCheckerWorkflow from './InteractiveMakerCheckerWorkflow';
+import TechBadge from './TechBadge';
 import {
   FaGraduationCap,
   FaCalendarAlt,
@@ -292,17 +293,12 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Technologies Applied */}
-                  <div className='flex flex-wrap items-center gap-1.5 pt-4 border-t border-warm-200 dark:border-charcoal-800'>
-                    <span className='text-xs font-bold text-neutral-400 dark:text-neutral-500 mr-2 uppercase tracking-wider font-mono'>
+                  <div className='flex flex-wrap items-center gap-2 pt-4 border-t border-warm-200 dark:border-charcoal-800'>
+                    <span className='text-xs font-bold text-neutral-400 dark:text-neutral-500 mr-1 uppercase tracking-wider font-mono'>
                       Applied Stack:
                     </span>
                     {exp.technologies.map((t, idx) => (
-                      <span
-                        key={idx}
-                        className='px-2.5 py-0.5 rounded text-xs font-medium bg-warm-100 dark:bg-charcoal-800 text-neutral-700 dark:text-neutral-300 border border-warm-200 dark:border-charcoal-750 font-mono transition hover:border-blue-500/40'
-                      >
-                        {t}
-                      </span>
+                      <TechBadge key={idx} name={t} size='sm' />
                     ))}
                   </div>
                 </motion.div>

@@ -5,6 +5,7 @@ import InteractiveDashboardDemo from './InteractiveDashboardDemo';
 import InteractiveCheckoutDemo from './InteractiveCheckoutDemo';
 import InteractiveOnboardingDemo from './InteractiveOnboardingDemo';
 import MacCodeSnippetWindow from './MacCodeSnippetWindow';
+import TechBadge from './TechBadge';
 import {
   FaBookOpen,
   FaCode,
@@ -223,12 +224,7 @@ const ProjectsSection = ({ onSelectCaseStudy }) => {
                   {/* Tech stack */}
                   <div className='flex flex-wrap gap-1.5 pt-2'>
                     {project.techStack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className='px-2.5 py-1 rounded-md text-[11px] sm:text-xs font-medium bg-warm-100 dark:bg-charcoal-800 text-neutral-700 dark:text-neutral-300 border border-warm-200 dark:border-charcoal-750 transition hover:border-blue-500/40'
-                      >
-                        {tech}
-                      </span>
+                      <TechBadge key={idx} name={tech} size='xs' />
                     ))}
                   </div>
                 </div>
