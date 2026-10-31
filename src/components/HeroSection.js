@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 import InteractiveHeroPreview from './InteractiveHeroPreview';
-import { FaArrowRight, FaDownload, FaFileAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaArrowRight, FaDownload, FaFileAlt, FaGithub, FaLinkedin, FaCopy, FaCheck } from 'react-icons/fa';
 
 const HeroSection = ({ onOpenResume }) => {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -138,7 +146,25 @@ const HeroSection = ({ onOpenResume }) => {
                 <span>{personalInfo.experienceBadge}</span>
               </div>
 
-              <div className='flex items-center gap-3 text-neutral-500 dark:text-neutral-400 text-base'>
+              <div className='flex items-center gap-2 sm:gap-2.5 text-neutral-500 dark:text-neutral-400 text-sm'>
+                <button
+                  onClick={handleCopyEmail}
+                  className='inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono font-medium text-neutral-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-warm-100 dark:hover:bg-charcoal-850 transition border border-warm-200 dark:border-charcoal-700 shadow-xs'
+                  title='Click to copy email address'
+                >
+                  {emailCopied ? (
+                    <>
+                      <FaCheck className='text-emerald-500 text-[10px]' />
+                      <span className='text-emerald-600 dark:text-emerald-400 font-semibold text-[11px]'>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaCopy className='text-neutral-400 text-[10px]' />
+                      <span className='text-[11px]'>{personalInfo.email}</span>
+                    </>
+                  )}
+                </button>
+
                 <motion.a
                   whileHover={{ scale: 1.15, y: -2 }}
                   href={personalInfo.github}
@@ -160,15 +186,6 @@ const HeroSection = ({ onOpenResume }) => {
                   title='LinkedIn (dinesh-singh3)'
                 >
                   <FaLinkedin />
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.15, y: -2 }}
-                  href={`mailto:${personalInfo.email}`}
-                  className='p-2 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-850 transition'
-                  aria-label='Email Dinesh'
-                  title='Email'
-                >
-                  <FaEnvelope />
                 </motion.a>
               </div>
             </motion.div>
