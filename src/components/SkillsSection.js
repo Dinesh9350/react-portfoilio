@@ -245,7 +245,7 @@ const SkillsSection = () => {
   const [selectedDiscipline, setSelectedDiscipline] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSkill, setActiveSkill] = useState(null);
-  const [mobileShowAll, setMobileShowAll] = useState(false);
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   const disciplines = ['All', ...skillsData.map((d) => d.discipline)];
 
@@ -301,7 +301,7 @@ const SkillsSection = () => {
                 key={disc}
                 onClick={() => {
                   setSelectedDiscipline(disc);
-                  setMobileShowAll(false);
+                  setShowAllSkills(false);
                 }}
                 className={`px-3 py-1.5 rounded-xl transition whitespace-nowrap ${
                   selectedDiscipline === disc
@@ -327,26 +327,35 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        {/* Skills Interactive Grid (Responsive on Mobile & All Visible on Desktop) */}
+        {/* Skills Interactive Grid (Adaptive Start: 3 on mobile, 6 on desktop, expandable to all) */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-6 text-left'>
           {filteredSkills.map((s, idx) => {
             const isSelected = activeSkill && activeSkill.name === s.name;
             const hasContext = !!skillProductionContext[s.name];
             const colors = getSkillColorTokens(s.name, s.discipline);
-            const isHiddenOnMobile =
-              !mobileShowAll &&
-              selectedDiscipline === 'All' &&
-              !searchQuery &&
-              idx >= 6;
+
+            // Progressive disclosure:
+            // When collapsed under 'All' without active search:
+            // - idx >= 6: hidden on both mobile and desktop
+            // - 3 <= idx < 6: hidden on mobile (< sm), visible on desktop (>= sm)
+            // - idx < 3: visible on both
+            let visibilityClass = 'flex';
+            if (selectedDiscipline === 'All' && !searchQuery && !showAllSkills) {
+              if (idx >= 6) {
+                visibilityClass = 'hidden';
+              } else if (idx >= 3) {
+                visibilityClass = 'hidden sm:flex';
+              } else {
+                visibilityClass = 'flex';
+              }
+            }
 
             return (
               <motion.div
                 key={idx}
                 whileHover={{ y: -2 }}
                 onClick={() => setActiveSkill(isSelected ? null : s)}
-                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex-col justify-between gap-3 shadow-xs ${
-                  isHiddenOnMobile ? 'hidden sm:flex' : 'flex'
-                } ${
+                className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex-col justify-between gap-3 shadow-xs ${visibilityClass} ${
                   isSelected
                     ? 'bg-blue-50/90 dark:bg-charcoal-850 border-blue-500 shadow-md ring-2 ring-blue-500/40'
                     : `${colors.cardBg} ${colors.borderHover} hover:shadow-md`
@@ -397,20 +406,20 @@ const SkillsSection = () => {
           })}
         </div>
 
-        {/* Mobile View Toggle: Expand / Collapse when on 'All' */}
+        {/* Unified View Toggle for Desktop & Mobile */}
         {selectedDiscipline === 'All' && !searchQuery && filteredSkills.length > 6 && (
-          <div className='sm:hidden mb-8 text-center'>
+          <div className='mb-8 text-center'>
             <button
-              onClick={() => setMobileShowAll(!mobileShowAll)}
-              className='px-4 py-2 rounded-xl text-xs font-bold bg-warm-200/70 dark:bg-charcoal-800 text-blue-600 dark:text-blue-400 border border-warm-300 dark:border-charcoal-700 hover:bg-warm-300/60 dark:hover:bg-charcoal-750 transition inline-flex items-center gap-2 shadow-xs'
+              onClick={() => setShowAllSkills(!showAllSkills)}
+              className='px-5 py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-charcoal-800 text-blue-600 dark:text-blue-400 border border-warm-300 dark:border-charcoal-700 hover:bg-warm-100 dark:hover:bg-charcoal-750 hover:border-blue-500/40 transition inline-flex items-center gap-2 shadow-xs'
             >
               <FaFilter className='text-[10px]' />
               <span>
-                {mobileShowAll
-                  ? 'Collapse to Core 6 Skills'
+                {showAllSkills
+                  ? 'Collapse to Core Stack'
                   : `Show All ${filteredSkills.length} Technical Skills`}
               </span>
-              <span>{mobileShowAll ? '↑' : '↓'}</span>
+              <span>{showAllSkills ? '↑' : '↓'}</span>
             </button>
           </div>
         )}
