@@ -24,38 +24,38 @@ const ResumeModal = ({ isOpen, onClose }) => {
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-sm'>
       <div
-        className='relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-2xl text-charcoal-900 dark:text-neutral-100 p-6 sm:p-10 print:p-0 print:border-none print:shadow-none text-left'
+        className='relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-2xl text-charcoal-900 dark:text-neutral-100 p-4 sm:p-10 print:p-0 print:border-none print:shadow-none text-left'
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Controls */}
-        <div className='flex items-center justify-between pb-6 mb-6 border-b border-warm-200 dark:border-charcoal-800 print:hidden'>
+        <div className='flex items-center justify-between pb-4 sm:pb-6 mb-4 sm:mb-6 border-b border-warm-200 dark:border-charcoal-800 print:hidden gap-2'>
           <div>
-            <h2 className='text-xl font-bold'>Dinesh Singh — Professional Resume</h2>
-            <p className='text-xs text-neutral-500 dark:text-neutral-400'>
-              Single Source of Truth · 2+ Years Experience
+            <h2 className='text-base sm:text-xl font-bold'>Dinesh Singh — Resume</h2>
+            <p className='text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400'>
+              2+ Years Experience · Verified
             </p>
           </div>
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-1.5 sm:gap-2'>
             <a
               href={personalInfo.resumeUrl}
               download='Dinesh-Singh-Resume.pdf'
-              className='inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition'
+              className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition'
               title='Download PDF'
             >
-              <FaDownload />
-              <span>Download PDF</span>
+              <FaDownload className='text-[10px]' />
+              <span><span className='hidden sm:inline'>Download </span>PDF</span>
             </a>
             <button
               onClick={() => window.print()}
-              className='inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border border-warm-300 dark:border-charcoal-700 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 transition'
+              className='hidden xs:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-warm-300 dark:border-charcoal-700 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 transition'
               title='Print'
             >
-              <FaPrint />
+              <FaPrint className='text-[10px]' />
               <span>Print</span>
             </button>
             <button
               onClick={onClose}
-              className='p-2 rounded-lg text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-800 transition'
+              className='p-1.5 sm:p-2 rounded-lg text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-800 transition'
               aria-label='Close Resume'
             >
               <FaTimes className='w-4 h-4' />

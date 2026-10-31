@@ -91,39 +91,42 @@ const ExperienceSection = () => {
         </motion.div>
 
         {/* Experience Mode Switcher (Timeline vs Live Simulator vs Architecture) */}
-        <div className='flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-warm-200/80 dark:bg-charcoal-900 border border-warm-300 dark:border-charcoal-800 text-xs font-semibold mb-10 max-w-2xl text-left'>
+        <div className='flex items-center gap-1.5 p-1.5 rounded-2xl bg-warm-200/80 dark:bg-charcoal-900 border border-warm-300 dark:border-charcoal-800 text-xs font-semibold mb-10 overflow-x-auto max-w-full text-left'>
           <button
             onClick={() => setActiveTab('timeline')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'timeline'
                 ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
             <FaLaptopCode className='text-xs text-blue-500' />
-            <span>1. Roles & Shipped Scope</span>
+            <span className='hidden sm:inline'>1. Roles & Shipped Scope</span>
+            <span className='sm:hidden'>1. Roles</span>
           </button>
           <button
             onClick={() => setActiveTab('simulator')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'simulator'
                 ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
             <FaShieldAlt className='text-xs text-purple-500' />
-            <span>2. Interactive Maker-Checker RBAC</span>
+            <span className='hidden sm:inline'>2. Interactive Maker-Checker RBAC</span>
+            <span className='sm:hidden'>2. RBAC Simulator</span>
           </button>
           <button
             onClick={() => setActiveTab('architecture')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap ${
               activeTab === 'architecture'
                 ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
             <FaProjectDiagram className='text-xs text-emerald-500' />
-            <span>3. Fintech System Matrix</span>
+            <span className='hidden sm:inline'>3. Fintech System Matrix</span>
+            <span className='sm:hidden'>3. Architecture</span>
           </button>
         </div>
 
@@ -335,26 +338,40 @@ const ExperienceSection = () => {
                 <motion.div
                   key={idx}
                   whileHover={{ y: -3 }}
-                  className='p-6 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm space-y-4 hover:border-blue-500/40 transition'
+                  className='p-5 sm:p-6 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm space-y-4 hover:border-blue-500/40 transition'
                 >
-                  <div className='pb-3 border-b border-warm-200 dark:border-charcoal-800'>
+                  {/* macOS Window Chrome Header */}
+                  <div className='flex items-center justify-between pb-3 border-b border-warm-200 dark:border-charcoal-800'>
+                    <div className='flex items-center gap-2'>
+                      <div className='flex items-center gap-1.5'>
+                        <span className='w-2.5 h-2.5 rounded-full bg-[#ff5f56]' />
+                        <span className='w-2.5 h-2.5 rounded-full bg-[#ffbd2e]' />
+                        <span className='w-2.5 h-2.5 rounded-full bg-[#27c93f]' />
+                      </div>
+                      <span className='text-[10px] font-mono text-neutral-400 ml-1'>
+                        Sys-0{idx + 1}.spec.ts
+                      </span>
+                    </div>
                     <span className='text-[10px] font-mono uppercase text-blue-600 dark:text-blue-400 font-bold'>
-                      System 0{idx + 1}
+                      Production Spec
                     </span>
-                    <h4 className='text-lg font-bold text-neutral-900 dark:text-white mt-0.5'>
+                  </div>
+
+                  <div>
+                    <h4 className='text-base sm:text-lg font-bold text-neutral-900 dark:text-white'>
                       {item.system}
                     </h4>
                   </div>
 
                   <div className='space-y-2 text-xs'>
                     <div>
-                      <span className='text-neutral-400 font-mono block'>Rendering Model:</span>
+                      <span className='text-neutral-400 font-mono block text-[11px]'>Rendering Model:</span>
                       <span className='font-semibold text-neutral-800 dark:text-neutral-200'>
                         {item.renderModel}
                       </span>
                     </div>
                     <div>
-                      <span className='text-neutral-400 font-mono block'>State Architecture:</span>
+                      <span className='text-neutral-400 font-mono block text-[11px]'>State Architecture:</span>
                       <span className='font-semibold text-neutral-800 dark:text-neutral-200'>
                         {item.stateArchitecture}
                       </span>

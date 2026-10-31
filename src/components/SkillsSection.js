@@ -91,7 +91,7 @@ const SkillsSection = () => {
   });
 
   return (
-    <section id='skills' className='relative py-20 sm:py-28 border-b border-warm-200 dark:border-charcoal-800/80 overflow-hidden'>
+    <section id='skills' className='relative py-16 sm:py-28 border-b border-warm-200 dark:border-charcoal-800/80 overflow-hidden'>
       {/* Background Glow */}
       <div className='absolute bottom-0 left-1/3 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none' />
 
@@ -108,10 +108,10 @@ const SkillsSection = () => {
             <FaLayerGroup className='text-xs' />
             <span>Interactive Technical Competence Matrix</span>
           </span>
-          <h2 className='text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
+          <h2 className='text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
             Skills Organized by Engineering Discipline
           </h2>
-          <p className='text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-2xl mt-2 leading-relaxed'>
+          <p className='text-xs sm:text-base text-neutral-600 dark:text-neutral-400 max-w-2xl mt-2 leading-relaxed'>
             Technologies utilized in shipping production applications. Click any skill chip below to inspect where and how it was deployed in production.
           </p>
         </motion.div>
@@ -119,12 +119,12 @@ const SkillsSection = () => {
         {/* Filter Tabs & Search Bar */}
         <div className='flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8 text-left'>
           {/* Discipline Filters */}
-          <div className='flex flex-wrap items-center gap-1.5 p-1 rounded-2xl bg-warm-200/80 dark:bg-charcoal-900 border border-warm-300 dark:border-charcoal-800 text-xs font-semibold'>
+          <div className='flex items-center gap-1.5 p-1 rounded-2xl bg-warm-200/80 dark:bg-charcoal-900 border border-warm-300 dark:border-charcoal-800 text-xs font-semibold overflow-x-auto max-w-full'>
             {disciplines.map((disc) => (
               <button
                 key={disc}
                 onClick={() => setSelectedDiscipline(disc)}
-                className={`px-3 py-1.5 rounded-xl transition ${
+                className={`px-3 py-1.5 rounded-xl transition whitespace-nowrap ${
                   selectedDiscipline === disc
                     ? 'bg-white dark:bg-charcoal-750 text-neutral-900 dark:text-white shadow-xs font-bold'
                     : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
@@ -136,7 +136,7 @@ const SkillsSection = () => {
           </div>
 
           {/* Quick Search */}
-          <div className='relative max-w-xs'>
+          <div className='relative w-full md:max-w-xs'>
             <FaSearch className='absolute left-3 top-2.5 text-neutral-400 text-xs' />
             <input
               type='text'
@@ -206,7 +206,7 @@ const SkillsSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.25 }}
-              className='p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/80 dark:from-charcoal-900 dark:via-charcoal-850 dark:to-blue-950/30 border border-blue-300 dark:border-blue-900/60 shadow-lg text-left'
+              className='p-4 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/80 dark:from-charcoal-900 dark:via-charcoal-850 dark:to-blue-950/30 border border-blue-300 dark:border-blue-900/60 shadow-lg text-left'
             >
               <div className='flex items-center justify-between pb-4 mb-4 border-b border-warm-200 dark:border-charcoal-750'>
                 <div className='flex items-center gap-3'>

@@ -78,46 +78,51 @@ const InteractiveMakerCheckerWorkflow = () => {
   };
 
   return (
-    <div className='rounded-2xl border border-warm-300 dark:border-charcoal-750 bg-warm-100/60 dark:bg-charcoal-900/90 p-5 sm:p-7 text-left shadow-sm backdrop-blur-sm'>
+    <div className='rounded-2xl border border-warm-300 dark:border-charcoal-750 bg-warm-100/60 dark:bg-charcoal-900/90 p-4 sm:p-7 text-left shadow-sm backdrop-blur-sm'>
       {/* Top Header & Role Switcher */}
       <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-warm-200 dark:border-charcoal-800'>
         <div>
           <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-1.5 mr-1'>
+              <span className='w-2.5 h-2.5 rounded-full bg-[#ff5f56]' />
+              <span className='w-2.5 h-2.5 rounded-full bg-[#ffbd2e]' />
+              <span className='w-2.5 h-2.5 rounded-full bg-[#27c93f]' />
+            </div>
             <span className='px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono uppercase bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/60'>
               Production RBAC Simulator
             </span>
-            <span className='text-xs text-neutral-500 dark:text-neutral-400 font-mono hidden sm:inline'>
-              SecurePay Dual-Authorization Pattern
+            <span className='text-xs text-neutral-500 dark:text-neutral-400 font-mono hidden md:inline'>
+              SecurePay Dual-Authorization
             </span>
           </div>
-          <h4 className='text-lg sm:text-xl font-extrabold text-neutral-900 dark:text-white mt-1'>
+          <h4 className='text-base sm:text-xl font-extrabold text-neutral-900 dark:text-white mt-1.5'>
             Maker-Checker Payout Disbursement Pipeline
           </h4>
         </div>
 
         {/* Role Toggle Selector */}
-        <div className='flex items-center gap-1.5 p-1 rounded-xl bg-warm-200/80 dark:bg-charcoal-850 border border-warm-300 dark:border-charcoal-700 text-xs font-semibold self-start sm:self-auto'>
+        <div className='flex items-center gap-1.5 p-1 rounded-xl bg-warm-200/80 dark:bg-charcoal-850 border border-warm-300 dark:border-charcoal-700 text-xs font-semibold self-start sm:self-auto overflow-x-auto max-w-full'>
           <button
             onClick={() => setRole('maker')}
-            className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap ${
               role === 'maker'
                 ? 'bg-white dark:bg-charcoal-700 text-neutral-900 dark:text-white shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
             <FaUserTie className='text-xs' />
-            <span>1. Maker (Operator)</span>
+            <span>1. Maker<span className='hidden sm:inline'> (Operator)</span></span>
           </button>
           <button
             onClick={() => setRole('checker')}
-            className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap ${
               role === 'checker'
                 ? 'bg-white dark:bg-charcoal-700 text-neutral-900 dark:text-white shadow-xs font-bold'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
             <FaUserCheck className='text-xs' />
-            <span>2. Checker (Approver)</span>
+            <span>2. Checker<span className='hidden sm:inline'> (Approver)</span></span>
           </button>
           <button
             onClick={handleReset}

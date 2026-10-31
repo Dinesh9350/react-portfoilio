@@ -60,7 +60,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id='contact' className='relative py-20 sm:py-28 overflow-hidden'>
+    <section id='contact' className='relative py-16 sm:py-28 overflow-hidden'>
       {/* Background ambient glow */}
       <div className='absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none' />
 
@@ -71,20 +71,20 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className='text-left mb-14'
+          className='text-left mb-10 sm:mb-14'
         >
           <span className='text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2 block font-mono'>
             Professional Inquiries
           </span>
-          <h2 className='text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
+          <h2 className='text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
             Have a frontend project or opportunity in mind? Let's talk.
           </h2>
-          <p className='text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mt-2 leading-relaxed'>
+          <p className='text-xs sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mt-2 leading-relaxed'>
             Currently open to Frontend Developer and Software Engineering opportunities where I can contribute to production web systems.
           </p>
         </motion.div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left'>
           {/* Direct Communication Channels */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -93,7 +93,7 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
             className='lg:col-span-5 space-y-4'
           >
-            <div className='p-6 sm:p-8 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'>
+            <div className='p-4 sm:p-8 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'>
               <h3 className='text-base font-bold text-neutral-900 dark:text-white mb-4'>
                 Direct Contact Channels
               </h3>
@@ -198,7 +198,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className='lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
+            className='lg:col-span-7 p-4 sm:p-8 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm'
           >
             <h3 className='text-base font-bold text-neutral-900 dark:text-white mb-1'>
               Send an Interactive Inquiry
@@ -208,11 +208,11 @@ const ContactSection = () => {
             </p>
 
             {/* Inquiry Topic Buttons */}
-            <div className='flex flex-wrap gap-2 mb-6'>
+            <div className='flex items-center gap-1.5 mb-6 overflow-x-auto max-w-full pb-1 sm:flex-wrap'>
               <button
                 type='button'
                 onClick={() => setInquiryType('full-time')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border whitespace-nowrap ${
                   inquiryType === 'full-time'
                     ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
                     : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'
@@ -224,7 +224,7 @@ const ContactSection = () => {
               <button
                 type='button'
                 onClick={() => setInquiryType('contract')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border whitespace-nowrap ${
                   inquiryType === 'contract'
                     ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
                     : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'
@@ -236,7 +236,7 @@ const ContactSection = () => {
               <button
                 type='button'
                 onClick={() => setInquiryType('discussion')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border whitespace-nowrap ${
                   inquiryType === 'discussion'
                     ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border-blue-400 dark:border-blue-800'
                     : 'bg-warm-50 dark:bg-charcoal-800 text-neutral-600 dark:text-neutral-400 border-warm-200 dark:border-charcoal-700'

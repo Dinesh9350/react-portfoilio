@@ -26,24 +26,24 @@ const CaseStudyModal = ({ project, onClose }) => {
       onClick={onClose}
     >
       <div
-        className='relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-2xl text-charcoal-900 dark:text-neutral-100 p-6 sm:p-10'
+        className='relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-2xl text-charcoal-900 dark:text-neutral-100 p-4 sm:p-10'
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className='absolute top-5 right-5 p-2 rounded-xl text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-800 transition'
+          className='absolute top-3 right-3 sm:top-5 sm:right-5 p-2 rounded-xl text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-warm-100 dark:hover:bg-charcoal-800 transition'
           aria-label='Close Case Study'
         >
-          <FaTimes className='w-5 h-5' />
+          <FaTimes className='w-4 h-4 sm:w-5 sm:h-5' />
         </button>
 
         {/* Header */}
-        <div className='mb-8 pr-8 text-left'>
-          <span className='inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 mb-3'>
+        <div className='mb-6 sm:mb-8 pr-6 sm:pr-8 text-left'>
+          <span className='inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 mb-2 sm:mb-3'>
             {project.category}
           </span>
-          <h2 className='text-2xl sm:text-4xl font-extrabold tracking-tight mb-2 text-neutral-900 dark:text-white'>
+          <h2 className='text-xl sm:text-4xl font-extrabold tracking-tight mb-2 text-neutral-900 dark:text-white'>
             {project.title}
           </h2>
           <p className='text-base sm:text-lg text-neutral-600 dark:text-neutral-300 font-medium'>

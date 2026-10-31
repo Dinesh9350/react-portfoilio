@@ -13,7 +13,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id='home' className='relative pt-28 sm:pt-36 pb-16 sm:pb-24 border-b border-warm-200 dark:border-charcoal-800/80 overflow-hidden bg-grid-pattern'>
+    <section id='home' className='relative pt-24 sm:pt-36 pb-12 sm:pb-24 border-b border-warm-200 dark:border-charcoal-800/80 overflow-hidden bg-grid-pattern'>
       {/* Animated Ambient Radial Glows */}
       <motion.div
         animate={{
@@ -59,7 +59,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-              className='text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.14] mb-6'
+              className='text-[26px] xs:text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.18] sm:leading-[1.14] mb-5 sm:mb-6'
             >
               Engineering{' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400'>
@@ -73,7 +73,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-              className='text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-8'
+              className='text-sm sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-6 sm:mb-8'
             >
               {personalInfo.supportingCopy}
             </motion.p>
@@ -83,13 +83,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-              className='flex flex-wrap items-center gap-3 sm:gap-4 mb-8'
+              className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8'
             >
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => scrollTo('projects')}
-                className='px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition shadow-sm hover:shadow-md flex items-center gap-2 group'
+                className='w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white transition shadow-sm hover:shadow-md flex items-center justify-center gap-2 group'
               >
                 <span>Explore My Work</span>
                 <FaArrowRight className='text-xs group-hover:translate-x-1 transition-transform' />
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 href={personalInfo.resumeUrl}
                 download='Dinesh-Singh-Resume.pdf'
-                className='px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center gap-2 shadow-xs hover:border-neutral-400 dark:hover:border-charcoal-600'
+                className='w-full sm:w-auto px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-charcoal-850 hover:bg-warm-100 dark:hover:bg-charcoal-800 text-neutral-800 dark:text-neutral-200 border border-warm-300 dark:border-charcoal-700 transition flex items-center justify-center gap-2 shadow-xs hover:border-neutral-400 dark:hover:border-charcoal-600'
               >
                 <FaDownload className='text-xs text-blue-600 dark:text-blue-400' />
                 <span>Download Resume</span>
@@ -109,7 +109,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ x: 3 }}
                 onClick={() => scrollTo('contact')}
-                className='text-sm font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white px-2 py-3 underline-offset-4 hover:underline transition'
+                className='text-sm font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white px-2 py-2 text-center underline-offset-4 hover:underline transition'
               >
                 Contact Me →
               </motion.button>
@@ -175,7 +175,7 @@ const HeroSection = () => {
         </div>
 
         {/* Real Production Metrics Strip with Staggered Entrance */}
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-warm-200 dark:border-charcoal-800/80 text-left'>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-warm-200 dark:border-charcoal-800/80 text-left'>
           {personalInfo.stats.map((s, idx) => (
             <motion.div
               key={idx}
@@ -184,15 +184,15 @@ const HeroSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className='p-5 rounded-2xl bg-white/80 dark:bg-charcoal-900/80 border border-warm-200 dark:border-charcoal-800 backdrop-blur-sm shadow-xs hover:shadow-md hover:border-blue-500/30 transition-all duration-300'
+              className='p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/80 dark:bg-charcoal-900/80 border border-warm-200 dark:border-charcoal-800 backdrop-blur-sm shadow-xs hover:shadow-md hover:border-blue-500/30 transition-all duration-300'
             >
-              <div className='text-2xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight font-mono'>
+              <div className='text-xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight font-mono'>
                 {s.value}
               </div>
               <div className='text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 mt-1'>
                 {s.label}
               </div>
-              <div className='text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5'>
+              <div className='text-[10px] sm:text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5'>
                 {s.sub}
               </div>
             </motion.div>

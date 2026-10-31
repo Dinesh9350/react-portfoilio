@@ -125,10 +125,10 @@ const InteractiveDashboardDemo = () => {
       {/* Control Bar: Portal Toggles & Search */}
       <div className='p-4 sm:p-5 border-b border-warm-200 dark:border-charcoal-800 flex flex-wrap items-center justify-between gap-3'>
         {/* Portal Switcher Tabs */}
-        <div className='flex items-center p-1 rounded-xl bg-warm-100 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs font-semibold'>
+        <div className='flex items-center p-1 rounded-xl bg-warm-100 dark:bg-charcoal-850 border border-warm-200 dark:border-charcoal-750 text-xs font-semibold overflow-x-auto max-w-full'>
           <button
             onClick={() => setActivePortal('ALL')}
-            className={`px-3 py-1.5 rounded-lg transition ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition whitespace-nowrap ${
               activePortal === 'ALL'
                 ? 'bg-white dark:bg-charcoal-700 text-neutral-900 dark:text-white shadow-sm'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
@@ -138,23 +138,23 @@ const InteractiveDashboardDemo = () => {
           </button>
           <button
             onClick={() => setActivePortal('PayIn')}
-            className={`px-3 py-1.5 rounded-lg transition ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition whitespace-nowrap ${
               activePortal === 'PayIn'
                 ? 'bg-white dark:bg-charcoal-700 text-neutral-900 dark:text-white shadow-sm'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            PayIn (Receivables)
+            PayIn <span className='hidden sm:inline'>(Receivables)</span>
           </button>
           <button
             onClick={() => setActivePortal('PayOut')}
-            className={`px-3 py-1.5 rounded-lg transition ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition whitespace-nowrap ${
               activePortal === 'PayOut'
                 ? 'bg-white dark:bg-charcoal-700 text-neutral-900 dark:text-white shadow-sm'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            PayOut (Disbursements)
+            PayOut <span className='hidden sm:inline'>(Disbursements)</span>
           </button>
         </div>
 
@@ -186,7 +186,7 @@ const InteractiveDashboardDemo = () => {
 
       {/* Transaction Table */}
       <div className='overflow-x-auto'>
-        <table className='w-full text-left text-xs'>
+        <table className='w-full min-w-[580px] text-left text-xs'>
           <thead className='bg-warm-100/60 dark:bg-charcoal-950/60 text-neutral-500 dark:text-neutral-400 uppercase font-mono text-[10px] tracking-wider border-b border-warm-200 dark:border-charcoal-800'>
             <tr>
               <th className='py-3 px-4'>Transaction ID</th>

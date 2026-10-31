@@ -22,17 +22,17 @@ const AboutSection = () => {
             <FaCompass className='text-xs' />
             <span>Engineering Philosophy</span>
           </span>
-          <h2 className='text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
+          <h2 className='text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
             About {personalInfo.name}
           </h2>
-          <p className='text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mt-2 leading-relaxed'>
+          <p className='text-xs sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mt-2 leading-relaxed'>
             A perspective on frontend engineering shaped by real product deadlines, high-stakes fintech operations, and user trust.
           </p>
         </motion.div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left'>
           {/* Narrative Column */}
-          <div className='lg:col-span-7 space-y-4'>
+          <div className='lg:col-span-7 space-y-3.5 sm:space-y-4'>
             {aboutData.narrative.map((paragraph, idx) => (
               <motion.p
                 key={idx}
@@ -40,7 +40,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className='text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed p-5 sm:p-6 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm hover:border-warm-300 dark:hover:border-charcoal-700 transition'
+                className='text-xs sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed p-4 sm:p-6 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm hover:border-warm-300 dark:hover:border-charcoal-700 transition'
               >
                 {paragraph}
               </motion.p>
@@ -48,7 +48,7 @@ const AboutSection = () => {
           </div>
 
           {/* Principles Column */}
-          <div className='lg:col-span-5 space-y-3.5'>
+          <div className='lg:col-span-5 space-y-3 sm:space-y-3.5'>
             <h3 className='text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 font-mono'>
               Core Engineering Principles
             </h3>
@@ -61,7 +61,7 @@ const AboutSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className='p-4 sm:p-5 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm hover:border-blue-400/40 dark:hover:border-blue-500/40 transition-all duration-300'
+                className='p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-charcoal-900 border border-warm-200 dark:border-charcoal-800 shadow-sm hover:border-blue-400/40 dark:hover:border-blue-500/40 transition-all duration-300'
               >
                 <h4 className='text-sm font-bold text-neutral-900 dark:text-white mb-1 flex items-center gap-2'>
                   <FaCheckCircle className='text-blue-600 dark:text-blue-400 text-xs flex-shrink-0' />
